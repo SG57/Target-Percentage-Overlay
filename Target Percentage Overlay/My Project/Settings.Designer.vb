@@ -140,7 +140,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("500")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("50")>  _
         Public Property refresh() As Integer
             Get
                 Return CType(Me("refresh"),Integer)
