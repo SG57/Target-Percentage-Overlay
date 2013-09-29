@@ -24,10 +24,10 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="refresh" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">50</Value>
+      <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="intensity" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">160</Value>
+    <Setting Name="intensity" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">128</Value>
     </Setting>
   </Settings>
 </SettingsFile>

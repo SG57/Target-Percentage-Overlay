@@ -1,4 +1,4 @@
-Target-Percentage-Overlay
+Target-Percentage-Overlay v1.1
 =========================
 
 A simple overlay that displays the percentage of a static, fill-able bar.

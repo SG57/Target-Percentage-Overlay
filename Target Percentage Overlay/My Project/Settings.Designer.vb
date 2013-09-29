@@ -140,7 +140,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("50")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("500")>  _
         Public Property refresh() As Integer
             Get
                 Return CType(Me("refresh"),Integer)
@@ -152,10 +152,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("160")>  _
-        Public Property intensity() As Integer
+         Global.System.Configuration.DefaultSettingValueAttribute("128")>  _
+        Public Property intensity() As Byte
             Get
-                Return CType(Me("intensity"),Integer)
+                Return CType(Me("intensity"),Byte)
             End Get
             Set
                 Me("intensity") = value

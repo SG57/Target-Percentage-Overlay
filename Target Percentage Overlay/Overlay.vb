@@ -1,4 +1,7 @@
-﻿Public Class Overlay
+﻿Imports System.Runtime.InteropServices
+Imports System.Drawing.Imaging
+
+Public Class Overlay
 
 
 
@@ -116,31 +119,57 @@
 
 
 	' this figures out how much percentage of the bar is filled and updates the overlay accordingly
-	Private bar_rect As Rectangle
+	Private line_bmp As Bitmap
 	Private bar_width As Integer
+	Private color_intensity As Byte
+	Private bar_rect As Rectangle
 
 	Private Sub calcDimensions()
-		bar_rect = New Rectangle(My.Settings.x1, My.Settings.y1, My.Settings.x2, My.Settings.y1)
+		color_intensity = My.Settings.intensity
 		bar_width = My.Settings.x2 - My.Settings.x1
+		bar_rect = New Rectangle(0, 0, bar_width, 1)
+
+		If Not IsNothing(line_bmp) Then line_bmp.Dispose()
+
+		line_bmp = New Bitmap(bar_width, 1, Imaging.PixelFormat.Format24bppRgb)	' no alpha
 	End Sub
 
-	Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-		Dim color_intensity As Integer = My.Settings.intensity
-		Dim line As Bitmap = CaptureArea(bar_rect)
+	' given bitmap data of a bar, will return the percentage filled the bar is
+	Private Function binarySearchFilledPercentage(ByRef bmd As BitmapData) As Integer
+		Dim low As Integer = 0
+		Dim high As Integer = bmd.Width - 1
+		Dim x As Integer
 
-		Me.lblOverlay.Text = "100" ' default full
+		Do While low < high
+			x = (low + high) / 2
 
-		For x As Integer = 0 To (bar_width - 1)	 ' start at the first, left pixel
-			Dim col As Color = line.GetPixel(x, 0)
-			If col.R < color_intensity And col.G < color_intensity And col.B < color_intensity Then	' possibly do 3 color intensities, one for each channel
-				Me.lblOverlay.Text = Math.Round(x / (bar_width - 1) * 100)
-				Exit For
+			Dim offset As Integer = x * 3	' 24 bpp pixel / 8-bits per byte = 3 byte intervals
+			Dim red As Byte = Marshal.ReadByte(bmd.Scan0, offset + 2)
+			Dim green As Byte = Marshal.ReadByte(bmd.Scan0, offset + 1)
+			Dim blue As Byte = Marshal.ReadByte(bmd.Scan0, offset)
+
+			If red < color_intensity And green < color_intensity And blue < color_intensity Then	' possibly do 3 color intensities instead, one for each channel
+				high = x - 1
+			Else
+				low = x + 1
 			End If
-		Next
+		Loop
 
-		line.Dispose()
+		Return Math.Round(low / (bar_width - 1) * 100)
+	End Function
 
-		If Me.lblOverlay.Text = 0 Then Me.lblOverlay.Text = "--"
+	Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+		CaptureArea(line_bmp, My.Settings.x1, My.Settings.y1)
+
+		' get bitmap's underlying data
+		Dim bmd As BitmapData = line_bmp.LockBits(bar_rect, System.Drawing.Imaging.ImageLockMode.ReadOnly, line_bmp.PixelFormat)
+
+		Me.lblOverlay.Text = binarySearchFilledPercentage(bmd)
+
+		line_bmp.UnlockBits(bmd)
+
+		If Me.lblOverlay.Text = "0" Then Me.lblOverlay.Text = "--"
+
 		Me.lblOverlay.Text += "%"
 	End Sub
 
@@ -173,20 +202,23 @@
 	Private Declare Auto Function GetDC Lib "user32.dll" (ByVal hWnd As IntPtr) As IntPtr
 	Private Declare Auto Function ReleaseDC Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal hDC As IntPtr) As IntPtr
 
-	' This returns the 'area' of the screen as a bitmap.  Needs manual disposal once finished with!
-	Public Function CaptureArea(ByVal area As Rectangle) As Bitmap
-		Dim bmp As New Bitmap(area.Width, area.Height, Imaging.PixelFormat.Format24bppRgb) ' no alpha
-
+	' fill 'line_bmp' with 'area' of the screen.  expects line_bmp to be setup prior. Needs manual disposal once finished with!
+	Public Sub CaptureArea(ByRef bmp As Bitmap, ByRef x As Integer, ByRef y As Integer)
 		Using g As Graphics = Graphics.FromImage(bmp)
 			Dim srcDC As IntPtr = GetDC(IntPtr.Zero)
 			Dim destDC As IntPtr = g.GetHdc()
 
-			BitBlt(destDC, 0, 0, area.Width, area.Height, srcDC, area.X, area.Y, 13369376) 'SRCCOPY = 13369376
+			BitBlt(destDC, 0, 0, bmp.Width, bmp.Height, srcDC, x, y, 13369376) 'SRCCOPY = 13369376
 
 			g.ReleaseHdc(destDC)
 			ReleaseDC(IntPtr.Zero, srcDC)
 		End Using
+	End Sub
 
-		Return bmp
-	End Function
+
+
+	' on closing
+	Private Sub onClose(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
+		line_bmp.Dispose()
+	End Sub
 End Class
