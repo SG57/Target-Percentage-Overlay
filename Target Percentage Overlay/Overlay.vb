@@ -219,6 +219,6 @@ Public Class Overlay
 
 	' on closing
 	Private Sub onClose(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
-		line_bmp.Dispose()
+		If Not IsNothing(line_bmp) Then line_bmp.Dispose()
 	End Sub
 End Class
