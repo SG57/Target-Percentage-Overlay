@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Lucida Handwriting, 27.75pt, style=Bold</Value>
+      <Value Profile="(Default)">Lucida Handwriting, 25.8000011pt, style=Bold</Value>
     </Setting>
     <Setting Name="font_color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">0, 192, 0</Value>
@@ -16,6 +16,12 @@
     </Setting>
     <Setting Name="refresh" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="ffxiv_process" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="bar" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
