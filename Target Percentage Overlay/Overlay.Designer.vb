@@ -22,119 +22,121 @@ Partial Class Overlay
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblOverlay = New System.Windows.Forms.Label()
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ContextMenuStrip1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripSeparator2, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.ToolStripSeparator4, Me.ToolStripMenuItem5, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(184, 132)
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(183, 22)
-        Me.ToolStripMenuItem3.Text = "Settings..."
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(183, 22)
-        Me.ToolStripMenuItem2.Text = "Change Font..."
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
-        Me.ToolStripMenuItem1.Text = "Change Font Color..."
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(180, 6)
-        '
-        'ToolStripMenuItem5
-        '
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(183, 22)
-        Me.ToolStripMenuItem5.Text = "Donate..."
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(180, 6)
-        '
-        'CloseToolStripMenuItem
-        '
-        Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
-        Me.CloseToolStripMenuItem.Text = "Close"
-        '
-        'lblOverlay
-        '
-        Me.lblOverlay.AutoSize = True
-        Me.lblOverlay.BackColor = System.Drawing.Color.Transparent
-        Me.lblOverlay.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.lblOverlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lblOverlay.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOverlay.ForeColor = System.Drawing.Color.White
-        Me.lblOverlay.Location = New System.Drawing.Point(0, 0)
-        Me.lblOverlay.Name = "lblOverlay"
-        Me.lblOverlay.Size = New System.Drawing.Size(51, 42)
-        Me.lblOverlay.TabIndex = 1
-        Me.lblOverlay.Text = "..."
-        Me.lblOverlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 2000
-        '
-        'Overlay
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSize = True
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(280, 42)
-        Me.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.ControlBox = False
-        Me.Controls.Add(Me.lblOverlay)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "Overlay"
-        Me.ShowInTaskbar = False
-        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "Overlay"
-        Me.TopMost = True
-        Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer))
-        Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+		Me.components = New System.ComponentModel.Container()
+		Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+		Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+		Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+		Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.lblOverlay = New System.Windows.Forms.Label()
+		Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+		Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+		Me.ContextMenuStrip1.SuspendLayout()
+		Me.SuspendLayout()
+		'
+		'ContextMenuStrip1
+		'
+		Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripSeparator2, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.ToolStripSeparator4, Me.ToolStripMenuItem5, Me.ToolStripSeparator1, Me.CloseToolStripMenuItem})
+		Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+		Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 142)
+		'
+		'ToolStripMenuItem3
+		'
+		Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+		Me.ToolStripMenuItem3.Size = New System.Drawing.Size(210, 24)
+		Me.ToolStripMenuItem3.Text = "Settings..."
+		'
+		'ToolStripSeparator2
+		'
+		Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+		Me.ToolStripSeparator2.Size = New System.Drawing.Size(207, 6)
+		'
+		'ToolStripMenuItem2
+		'
+		Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+		Me.ToolStripMenuItem2.Size = New System.Drawing.Size(210, 24)
+		Me.ToolStripMenuItem2.Text = "Change Font..."
+		'
+		'ToolStripMenuItem1
+		'
+		Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(210, 24)
+		Me.ToolStripMenuItem1.Text = "Change Font Color..."
+		'
+		'ToolStripSeparator4
+		'
+		Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+		Me.ToolStripSeparator4.Size = New System.Drawing.Size(207, 6)
+		'
+		'ToolStripMenuItem5
+		'
+		Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+		Me.ToolStripMenuItem5.Size = New System.Drawing.Size(210, 24)
+		Me.ToolStripMenuItem5.Text = "Donate..."
+		'
+		'ToolStripSeparator1
+		'
+		Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+		Me.ToolStripSeparator1.Size = New System.Drawing.Size(207, 6)
+		'
+		'CloseToolStripMenuItem
+		'
+		Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
+		Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+		Me.CloseToolStripMenuItem.Text = "Close"
+		'
+		'lblOverlay
+		'
+		Me.lblOverlay.AutoSize = True
+		Me.lblOverlay.BackColor = System.Drawing.Color.Transparent
+		Me.lblOverlay.ContextMenuStrip = Me.ContextMenuStrip1
+		Me.lblOverlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.lblOverlay.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblOverlay.ForeColor = System.Drawing.Color.White
+		Me.lblOverlay.Location = New System.Drawing.Point(0, 0)
+		Me.lblOverlay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+		Me.lblOverlay.Name = "lblOverlay"
+		Me.lblOverlay.Size = New System.Drawing.Size(65, 53)
+		Me.lblOverlay.TabIndex = 1
+		Me.lblOverlay.Text = "..."
+		Me.lblOverlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
+		'Timer1
+		'
+		Me.Timer1.Enabled = True
+		Me.Timer1.Interval = 2000
+		'
+		'Overlay
+		'
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoSize = True
+		Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+		Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer))
+		Me.ClientSize = New System.Drawing.Size(59, 51)
+		Me.ContextMenuStrip = Me.ContextMenuStrip1
+		Me.ControlBox = False
+		Me.Controls.Add(Me.lblOverlay)
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+		Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+		Me.MaximizeBox = False
+		Me.MinimizeBox = False
+		Me.Name = "Overlay"
+		Me.ShowInTaskbar = False
+		Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+		Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+		Me.Text = "Overlay"
+		Me.TopMost = True
+		Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(1, Byte), Integer))
+		Me.ContextMenuStrip1.ResumeLayout(False)
+		Me.ResumeLayout(False)
+		Me.PerformLayout()
 
-    End Sub
+	End Sub
 	Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
 	Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 	Friend WithEvents lblOverlay As System.Windows.Forms.Label

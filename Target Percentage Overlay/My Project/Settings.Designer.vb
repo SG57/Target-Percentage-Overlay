@@ -129,12 +129,36 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property bar() As Integer
+        Public Property target() As Integer
             Get
-                Return CType(Me("bar"),Integer)
+                Return CType(Me("target"),Integer)
             End Get
             Set
-                Me("bar") = value
+                Me("target") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
+        Public Property display() As Integer
+            Get
+                Return CType(Me("display"),Integer)
+            End Get
+            Set
+                Me("display") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property resource() As Integer
+            Get
+                Return CType(Me("resource"),Integer)
+            End Get
+            Set
+                Me("resource") = value
             End Set
         End Property
     End Class

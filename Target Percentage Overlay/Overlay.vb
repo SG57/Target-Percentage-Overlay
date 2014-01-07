@@ -35,8 +35,6 @@ Public Class Overlay
 
 					ffxiv_proc = procs(My.Settings.ffxiv_process)
 					ffxiv_proc_hdl = OpenProcess(PROCESS_VM_READ Or PROCESS_QUERY_INFORMATION, False, ffxiv_proc.Id)
-
-					calcPercentAddress()
 				End If
 			End If
 		Catch ex As Exception
@@ -54,12 +52,25 @@ Public Class Overlay
 	'
 	' ADD/TWEAK THE FOLLOWING MEMORY ADDRESSES AND OFFSETS SHOULD ANYTHING BREAK WITH FUTURE PATCHES!
 	'
-	' Bars:
-	' 1: Target
-	' 2: Focus Target
-	Dim percent_addr As Int32
-	Dim MEMORY_OFFSETS As Int32()() = {({&H1073A10, &H20, &H10, &H14, &H20, &H64}),
-	 ({&H1073A10, &H20, &HC, &H24, &H20, &H190})}
+	' Memory offest indicies into the MEMORY_OFFSETS array:
+	Const MEM_TARGET_HP = 0
+	Const MEM_TARGET_HP_MAX = 1
+	Const MEM_TARGET_MP = 2
+	Const MEM_TARGET_MP_MAX = 3
+	Const MEM_TARGET_TP = 4
+
+	Dim MEMORY_OFFSETS As Int32()()() = {
+	({({&H1071770, &H16A0}),
+	({&H1071770, &H16A4}),
+	({&H1071770, &H16A8}),
+	({&H1071770, &H16AC}),
+	({&H1071770, &H16B0})}),
+ _
+	({({&H10717B0, &H16A0}),
+	({&H10717B0, &H16A4}),
+	({&H10717B0, &H16A8}),
+	({&H10717B0, &H16AC}),
+	({&H10717B0, &H16B0})})}
 
 	Public Function ReadInt32(ByVal addr As IntPtr) As Int32
 		Dim _dataBytes(3) As Byte
@@ -67,34 +78,62 @@ Public Class Overlay
 		Return BitConverter.ToInt32(_dataBytes, 0)
 	End Function
 
-	Public Sub calcPercentAddress()	' one-time calculation of the offset into ffxiv's base address to read the percentage
-		If ffxiv_proc_hdl <> IntPtr.Zero Then
-			percent_addr = ffxiv_proc.MainModule.BaseAddress
+	Public Function getMemoryAddress(ByVal index As Integer) As Int32
+		Dim percent_addr As Int32 = ffxiv_proc.MainModule.BaseAddress
 
-			For i = 0 To MEMORY_OFFSETS(My.Settings.bar).Length - 1
-				percent_addr = IntPtr.Add(percent_addr, MEMORY_OFFSETS(My.Settings.bar)(i))
-				If i < MEMORY_OFFSETS(My.Settings.bar).Length - 1 Then percent_addr = ReadInt32(percent_addr)
-			Next
+		For i = 0 To MEMORY_OFFSETS(My.Settings.target)(index).Length - 1
+			percent_addr = IntPtr.Add(percent_addr, MEMORY_OFFSETS(My.Settings.target)(index)(i))
+			If i < MEMORY_OFFSETS(My.Settings.target)(index).Length - 1 Then percent_addr = ReadInt32(percent_addr)
+		Next
 
-			Console.Out.WriteLine(vbCrLf & "Base Address: " & ffxiv_proc.MainModule.BaseAddress.ToString("X") & vbCrLf & "Bar: " & My.Settings.bar & " --> Percent Address: " & percent_addr.ToString("X"))
-		End If
-	End Sub
+		'Console.Out.WriteLine(vbCrLf & "Base Address: " & ffxiv_proc.MainModule.BaseAddress.ToString("X") & vbCrLf & "Bar: " & My.Settings.bar & " --> Percent Address: " & percent_addr.ToString("X"))
+		Return percent_addr
+	End Function
 
-	Public Function getCurrentPercentage() As Int32
+	Public Function getOverlayText() As String
+		Dim txt As String = ""
+
 		Try
-			Return ReadInt32(percent_addr)
+			Dim curr = 0
+			Dim max = 0
+
+			' get the numbers from memory needed
+			If My.Settings.resource = Settings.RES_HP Then
+				curr = ReadInt32(getMemoryAddress(MEM_TARGET_HP))
+				max = ReadInt32(getMemoryAddress(MEM_TARGET_HP_MAX))
+			ElseIf My.Settings.resource = Settings.RES_MP Then
+				curr = ReadInt32(getMemoryAddress(MEM_TARGET_MP))
+				max = ReadInt32(getMemoryAddress(MEM_TARGET_MP_MAX))
+			ElseIf My.Settings.resource = Settings.RES_TP Then
+				curr = ReadInt32(getMemoryAddress(MEM_TARGET_TP))
+				max = 1000
+			End If
+
+			' format textually
+			If max = 0 And curr = 0 Then
+				txt = "--"
+			Else
+				If My.Settings.display = 0 Or My.Settings.display = 2 Then
+					txt = curr & " / " & max & vbCrLf
+				End If
+				If My.Settings.display = 1 Or My.Settings.display = 2 Then
+					txt = txt & (100.0 * curr / max).ToString("N1") & " %"
+				End If
+			End If
+
 		Catch ex As Exception
-			If ffxiv_proc_hdl <> IntPtr.Zero Then CloseHandle(ffxiv_proc_hdl)
-			ffxiv_proc_hdl = IntPtr.Zero
-			Return -1
+			forceReattach()
+			txt = FFXIV_NOT_RUNNING()
 		End Try
+
+		Return txt
 	End Function
 
 
 
 	' init
 	Private Sub Overlay_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-		MsgBox("An overlay that displays the percentage 'health' of specific bars in FFXIV:ARR from memory, as such it is instant and reliable." & vbCrLf & vbCrLf & vbCrLf & vbCrLf & "________________________________________________" & vbCrLf & "~~Note: the overlay will not overlay in true-fullscreen mode.  If you have 2 monitors, however, you could always put the overlay on the other monitor." & vbCrLf & vbCrLf & "jordansg57@gmail.com - (C) 2013 Cord Rehn", MsgBoxStyle.Information, "Target Percentage Overlay v2.0")
+		MsgBox("An overlay that displays numerical values and percentages of various resources of targets in FFXIV:ARR as read from memory, making it instant and reliable." & vbCrLf & vbCrLf & vbCrLf & vbCrLf & "________________________________________________" & vbCrLf & "~~Note: the overlay will not overlay in true-fullscreen mode.  If you have 2 monitors, however, you could always put the overlay on the other monitor." & vbCrLf & vbCrLf & "jordansg57@gmail.com - (C) 2013 Cord Rehn", MsgBoxStyle.Information, "Target Percentage Overlay v2.02")
 
 		Me.Left = My.Settings.win_x
 		Me.Top = My.Settings.win_y
@@ -175,7 +214,7 @@ Public Class Overlay
 			Me.lblOverlay.Text = FFXIV_NOT_RUNNING()
 
 		Else ' attached to ffxiv process, read memory for percentage
-			Me.lblOverlay.Text = getCurrentPercentage() & "%"
+			Me.lblOverlay.Text = getOverlayText()
 		End If
 	End Sub
 
@@ -197,6 +236,6 @@ Public Class Overlay
 
 	' close
 	Private Sub Overlay_FormClosed() Handles MyBase.FormClosed
-		If ffxiv_proc_hdl <> IntPtr.Zero Then CloseHandle(ffxiv_proc_hdl)
+		forceReattach()
 	End Sub
 End Class
