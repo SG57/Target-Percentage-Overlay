@@ -114,7 +114,7 @@ Public Class Overlay
 				txt = "--"
 			Else
 				If My.Settings.display = 0 Or My.Settings.display = 2 Then
-					txt = curr & " / " & max & vbCrLf
+					txt = curr.ToString("N0") & " / " & max.ToString("N0") & vbCrLf
 				End If
 				If My.Settings.display = 1 Or My.Settings.display = 2 Then
 					txt = txt & (100.0 * curr / max).ToString("N1") & " %"
