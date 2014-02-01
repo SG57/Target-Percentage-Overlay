@@ -122,11 +122,11 @@ Public Class Overlay
         RefreshText()
     End Sub
 
-    Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_settings_menu_item.Click
+    Private Sub SettingsMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_settings_menu_item.Click
         Settings.Show()
     End Sub
 
-    Private Sub ToolStripMenuItem5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_donate_menu_item.Click
+    Private Sub DonateMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_donate_menu_item.Click
         System.Diagnostics.Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JordanSg57%40gmail%2ecom&lc=US&item_name=Freelance%20Developer&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted")
     End Sub
 
