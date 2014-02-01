@@ -151,7 +151,7 @@ Partial Class Settings
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Target (in hex) :"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label8, "Which target to pull information from; main target or focus target.")
+        Me.ToolTip1.SetToolTip(Me.Label8, "The address of the pointer pointing to your target's information.")
         '
         'Label9
         '
@@ -164,7 +164,7 @@ Partial Class Settings
         Me.Label9.TabIndex = 20
         Me.Label9.Text = "Focus (in hex) :"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label9, "Which target to pull information from; main target or focus target.")
+        Me.ToolTip1.SetToolTip(Me.Label9, "The address of the pointer pointing to your focus target's information.")
         '
         'boxFfxivProcIndex
         '
