@@ -1,4 +1,5 @@
 ﻿Public Class Settings
+    Public VERSION As String = "2.02"
 
     Public Enum EntityType
         TARGET = 0
@@ -16,7 +17,6 @@
         PERCENT = 1
         VALUES_AND_PERCENT = 2
     End Enum
-	
 
     ' init from settings prefs
     Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
