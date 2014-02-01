@@ -24,7 +24,6 @@ Partial Class Settings
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Settings))
-        Me.save_button = New System.Windows.Forms.Button()
         Me.boxRefreshTimer = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -32,6 +31,8 @@ Partial Class Settings
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.boxFfxivProcIndex = New System.Windows.Forms.TextBox()
         Me.comboTarget = New System.Windows.Forms.ComboBox()
         Me.comboDisplay = New System.Windows.Forms.ComboBox()
@@ -39,24 +40,10 @@ Partial Class Settings
         Me.boxTargetAddress = New System.Windows.Forms.TextBox()
         Me.boxFocusAddress = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ok_button = New System.Windows.Forms.Button()
+        Me.cancel_button = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'save_button
-        '
-        Me.save_button.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.save_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.save_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.save_button.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.save_button.Location = New System.Drawing.Point(15, 340)
-        Me.save_button.Name = "save_button"
-        Me.save_button.Size = New System.Drawing.Size(321, 36)
-        Me.save_button.TabIndex = 3
-        Me.save_button.Text = "Save"
-        Me.save_button.UseVisualStyleBackColor = True
         '
         'boxRefreshTimer
         '
@@ -140,6 +127,32 @@ Partial Class Settings
         Me.Label4.Text = "Resource :"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label4, "What resource to draw the percentage from; HP, MP or TP")
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(10, 37)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(101, 20)
+        Me.Label6.TabIndex = 23
+        Me.Label6.Text = "Main Target :"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Label6, resources.GetString("Label6.ToolTip"))
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(10, 76)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(111, 20)
+        Me.Label7.TabIndex = 24
+        Me.Label7.Text = "Focus Target :"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Label7, resources.GetString("Label7.ToolTip"))
         '
         'boxFfxivProcIndex
         '
@@ -235,37 +248,33 @@ Partial Class Settings
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Memory Addresses"
         '
-        'Label6
+        'ok_button
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(10, 37)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(101, 20)
-        Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Main Target :"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label6, resources.GetString("Label6.ToolTip"))
+        Me.ok_button.Location = New System.Drawing.Point(126, 338)
+        Me.ok_button.Name = "ok_button"
+        Me.ok_button.Size = New System.Drawing.Size(98, 35)
+        Me.ok_button.TabIndex = 24
+        Me.ok_button.Text = "OK"
+        Me.ok_button.UseVisualStyleBackColor = True
         '
-        'Label7
+        'cancel_button
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(10, 76)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(111, 20)
-        Me.Label7.TabIndex = 24
-        Me.Label7.Text = "Focus Target :"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label7, resources.GetString("Label7.ToolTip"))
+        Me.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cancel_button.Location = New System.Drawing.Point(230, 338)
+        Me.cancel_button.Name = "cancel_button"
+        Me.cancel_button.Size = New System.Drawing.Size(101, 35)
+        Me.cancel_button.TabIndex = 25
+        Me.cancel_button.Text = "Cancel"
+        Me.cancel_button.UseVisualStyleBackColor = True
         '
         'Settings
         '
+        Me.AcceptButton = Me.ok_button
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CancelButton = Me.cancel_button
         Me.ClientSize = New System.Drawing.Size(351, 391)
+        Me.Controls.Add(Me.cancel_button)
+        Me.Controls.Add(Me.ok_button)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.comboResource)
         Me.Controls.Add(Me.Label4)
@@ -276,7 +285,6 @@ Partial Class Settings
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.boxRefreshTimer)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.save_button)
         Me.Controls.Add(Me.Label2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -294,21 +302,22 @@ Partial Class Settings
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents save_button As System.Windows.Forms.Button
-	Friend WithEvents boxRefreshTimer As System.Windows.Forms.TextBox
-	Friend WithEvents Label5 As System.Windows.Forms.Label
-	Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-	Friend WithEvents boxFfxivProcIndex As System.Windows.Forms.TextBox
-	Friend WithEvents Label1 As System.Windows.Forms.Label
-	Friend WithEvents comboTarget As System.Windows.Forms.ComboBox
-	Friend WithEvents Label2 As System.Windows.Forms.Label
-	Friend WithEvents Label3 As System.Windows.Forms.Label
-	Friend WithEvents comboDisplay As System.Windows.Forms.ComboBox
-	Friend WithEvents comboResource As System.Windows.Forms.ComboBox
+    Friend WithEvents boxRefreshTimer As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents boxFfxivProcIndex As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents comboTarget As System.Windows.Forms.ComboBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents comboDisplay As System.Windows.Forms.ComboBox
+    Friend WithEvents comboResource As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents boxTargetAddress As System.Windows.Forms.TextBox
     Friend WithEvents boxFocusAddress As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents ok_button As System.Windows.Forms.Button
+    Friend WithEvents cancel_button As System.Windows.Forms.Button
 End Class

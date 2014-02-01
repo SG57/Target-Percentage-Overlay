@@ -29,7 +29,7 @@
         boxFocusAddress.Text = "0x" & Conversion.Hex(My.Settings.focus_pointer_address)
     End Sub
 
-    Private Sub SaveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles save_button.Click
+    Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ok_button.Click
         My.Settings.refresh_interval = boxRefreshTimer.Text
         My.Settings.ffxiv_process_index = boxFfxivProcIndex.Text
         My.Settings.entity = CType(comboTarget.SelectedIndex, EntityType)
@@ -47,6 +47,10 @@
         My.Settings.Save()
         Me.Close()
         Overlay.SettingsChanged()
+    End Sub
+
+    Private Sub CancelButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancel_button.Click
+        Me.Close()
     End Sub
 
     Private Function CheckIfUserWantsToResetPointers() As Boolean
