@@ -19,7 +19,6 @@
         VALUES_AND_PERCENT = 2
     End Enum
 
-    ' init from settings prefs
     Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         boxRefreshTimer.Text = My.Settings.refresh_interval
         boxFfxivProcIndex.Text = My.Settings.ffxiv_process_index
@@ -30,7 +29,6 @@
         boxFocusAddress.Text = "0x" & Conversion.Hex(My.Settings.focus_pointer_address)
     End Sub
 
-    ' save click
     Private Sub SaveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles save_button.Click
         My.Settings.refresh_interval = boxRefreshTimer.Text
         My.Settings.ffxiv_process_index = boxFfxivProcIndex.Text
