@@ -72,24 +72,7 @@ Public Class Overlay
 
     ' init
     Private Sub Overlay_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' detect if we are running a later version of TPO, meaning the main target and focus target pointers may have changed
-        ' as they may have been broken prior, hence the update.  Ask the user if they'd like to overwrite their current addresses.
-        ' if this is their first run (version_old = 0), don't ask for input, just store the default pointers.
-        If My.Settings.version_old = 0 OrElse (My.Settings.version_old < Settings.VERSION _
-                                                AndAlso MsgBox("I see you are running a newer version of Target Percentage Overlay (v" & Settings.VERSION & ")." & vbCrLf & _
-                                                               vbCrLf & _
-                                                               "This could mean the Main Target and Focus Target memory addresses may needed fixing after a recent FFXIV patch." & vbCrLf & _
-                                                               vbCrLf & _
-                                                               "Would you like to update your current settings to the new memory addresses? (RECOMMENDED)" & vbCrLf & _
-                                                               "If you're not sure, click yes.", MsgBoxStyle.YesNo, "TPO Updated - Update Addresses?") = MsgBoxResult.Yes) _
-        Then
-            My.Settings.target_pointer_address = memory.PTR_TO_TARGET_ENTITY
-            My.Settings.focus_pointer_address = memory.PTR_TO_FOCUS_ENTITY
-        End If
-
-        My.Settings.version_old = Settings.VERSION
-        My.Settings.Save()
-
+        Settings.OnStartup()
         SettingsChanged()
     End Sub
 

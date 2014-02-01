@@ -6,8 +6,8 @@
     '
     '   These were the default pointers for the ffxiv.exe process as of 2/1/2014. - Cord
     '
-    Public Const PTR_TO_TARGET_ENTITY = &H1072770
-    Public Const PTR_TO_FOCUS_ENTITY = &H10727B0
+    Public Const DEFAULT_PTR_TO_TARGET_ENTITY = &H1072770
+    Public Const DEFAULT_PTR_TO_FOCUS_ENTITY = &H10727B0
     Private Const ENTITY_OFFSET_HP = &H16A0
     Private Const ENTITY_OFFSET_HP_MAX = &H16A4
     Private Const ENTITY_OFFSET_MP = &H16A8
