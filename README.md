@@ -1,4 +1,4 @@
-Target-Percentage-Overlay v2.0
+Target-Percentage-Overlay
 =========================
 
 A simple overlay that displays the percentage of the current target in FFXIV by reading from memory.
