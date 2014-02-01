@@ -1,39 +1,47 @@
 ﻿Public Class Settings
+    Public VERSION As String = "2.02"
 
-	Public Const TARGET_MAIN = 0
-	Public Const TARGET_FOCUS = 1
+    Public Enum EntityType
+        TARGET = 0
+        FOCUS = 1
+    End Enum
 
-	Public Const RES_HP = 0
-	Public Const RES_MP = 1
-	Public Const RES_TP = 2
+    Public Enum ResourceType
+        HP = 0
+        MP = 1
+        TP = 2
+    End Enum
 
+    Public Enum DisplayType
+        VALUES = 0
+        PERCENT = 1
+        VALUES_AND_PERCENT = 2
+    End Enum
 
-	' init from settings prefs
-	Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-		boxRefreshTimer.Text = My.Settings.refresh
-		boxFfxivProcIndex.Text = My.Settings.ffxiv_process
-		comboTarget.SelectedIndex = My.Settings.target
-		comboDisplay.SelectedIndex = My.Settings.display
-		comboResource.SelectedIndex = My.Settings.resource
-	End Sub
+    ' init from settings prefs
+    Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        boxRefreshTimer.Text = My.Settings.refresh_interval
+        boxFfxivProcIndex.Text = My.Settings.ffxiv_process_index
+        comboTarget.SelectedIndex = 0 + My.Settings.entity
+        comboDisplay.SelectedIndex = 0 + My.Settings.display
+        comboResource.SelectedIndex = 0 + My.Settings.resource
+        boxTargetAddress.Text = Conversion.Hex(My.Settings.target_pointer_address)
+        boxFocusAddress.Text = Conversion.Hex(My.Settings.focus_pointer_address)
+    End Sub
 
-	' save click
-	Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-		My.Settings.refresh = boxRefreshTimer.Text
-		Overlay.Timer1.Interval = boxRefreshTimer.Text
+    ' save click
+    Private Sub SaveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles save_button.Click
+        My.Settings.refresh_interval = boxRefreshTimer.Text
+        My.Settings.ffxiv_process_index = boxFfxivProcIndex.Text
+        My.Settings.entity = CType(comboTarget.SelectedIndex, EntityType)
+        My.Settings.display = CType(comboDisplay.SelectedIndex, DisplayType)
+        My.Settings.resource = CType(comboResource.SelectedIndex, ResourceType)
+        My.Settings.target_pointer_address = Convert.ToInt32(boxTargetAddress.Text, 16)
+        My.Settings.focus_pointer_address = Convert.ToInt32(boxFocusAddress.Text, 16)
 
-		My.Settings.ffxiv_process = boxFfxivProcIndex.Text ' force re-attach
+        My.Settings.Save()
+        Me.Close()
 
-		My.Settings.target = comboTarget.SelectedIndex
-
-		My.Settings.display = comboDisplay.SelectedIndex
-
-		My.Settings.resource = comboResource.SelectedIndex
-
-		' IMPORTANT
-		Overlay.forceReattach()
-
-		My.Settings.Save()
-		Me.Close()
-	End Sub
+        Overlay.SettingsChanged()
+    End Sub
 End Class

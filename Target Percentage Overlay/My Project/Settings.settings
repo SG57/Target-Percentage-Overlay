@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Lucida Handwriting, 25.8000011pt, style=Bold</Value>
-    </Setting>
     <Setting Name="font_color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">0, 192, 0</Value>
     </Setting>
@@ -14,19 +11,28 @@
     <Setting Name="win_y" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="refresh" Type="System.Int32" Scope="User">
+    <Setting Name="refresh_interval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">250</Value>
     </Setting>
-    <Setting Name="ffxiv_process" Type="System.Int32" Scope="User">
+    <Setting Name="ffxiv_process_index" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="target" Type="System.Int32" Scope="User">
+    <Setting Name="entity" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="display" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="resource" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 25.8000011pt, style=Bold</Value>
+    </Setting>
+    <Setting Name="target_pointer_address" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="focus_pointer_address" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
