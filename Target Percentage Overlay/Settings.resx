@@ -120,6 +120,18 @@
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="Label6.ToolTip" xml:space="preserve">
+    <value>*ADVANCED*
+The offset in hex from the base address of the ffxiv.exe process to get to the main target's object in memory.
+
+Set to 0, or leave blank, to reset this to the default value for this version of TPO.</value>
+  </data>
+  <data name="Label7.ToolTip" xml:space="preserve">
+    <value>*ADVANCED*
+The offset in hex from the base address of the ffxiv.exe process to get to the focus target's object in memory.
+
+Set to 0, or leave blank, to reset this to the default value for this version of TPO.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

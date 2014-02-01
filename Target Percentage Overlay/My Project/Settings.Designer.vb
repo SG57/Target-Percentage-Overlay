@@ -165,9 +165,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property target_pointer_address() As Integer
+        Public Property target_pointer_address() As UInteger
             Get
-                Return CType(Me("target_pointer_address"),Integer)
+                Return CType(Me("target_pointer_address"),UInteger)
             End Get
             Set
                 Me("target_pointer_address") = value
@@ -177,12 +177,24 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property focus_pointer_address() As Integer
+        Public Property focus_pointer_address() As UInteger
             Get
-                Return CType(Me("focus_pointer_address"),Integer)
+                Return CType(Me("focus_pointer_address"),UInteger)
             End Get
             Set
                 Me("focus_pointer_address") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property version_old() As Decimal
+            Get
+                Return CType(Me("version_old"),Decimal)
+            End Get
+            Set
+                Me("version_old") = value
             End Set
         End Property
     End Class

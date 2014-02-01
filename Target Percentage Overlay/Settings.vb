@@ -1,5 +1,6 @@
 ﻿Public Class Settings
-    Public VERSION As String = "2.02"
+    ' NOTE: Just increment this for every new release. That is all.
+    Public Const VERSION = 2.1
 
     Public Enum EntityType
         TARGET = 0
@@ -25,8 +26,8 @@
         comboTarget.SelectedIndex = 0 + My.Settings.entity
         comboDisplay.SelectedIndex = 0 + My.Settings.display
         comboResource.SelectedIndex = 0 + My.Settings.resource
-        boxTargetAddress.Text = Conversion.Hex(My.Settings.target_pointer_address)
-        boxFocusAddress.Text = Conversion.Hex(My.Settings.focus_pointer_address)
+        boxTargetAddress.Text = "0x" & Conversion.Hex(My.Settings.target_pointer_address)
+        boxFocusAddress.Text = "0x" & Conversion.Hex(My.Settings.focus_pointer_address)
     End Sub
 
     ' save click
@@ -36,12 +37,17 @@
         My.Settings.entity = CType(comboTarget.SelectedIndex, EntityType)
         My.Settings.display = CType(comboDisplay.SelectedIndex, DisplayType)
         My.Settings.resource = CType(comboResource.SelectedIndex, ResourceType)
-        My.Settings.target_pointer_address = Convert.ToInt32(boxTargetAddress.Text, 16)
-        My.Settings.focus_pointer_address = Convert.ToInt32(boxFocusAddress.Text, 16)
+
+        If boxTargetAddress.Text.Length = 0 Then boxTargetAddress.Text = "0"
+        My.Settings.target_pointer_address = Convert.ToUInt32(boxTargetAddress.Text, 16)
+        If My.Settings.target_pointer_address = 0 Then My.Settings.target_pointer_address = Memory.PTR_TO_TARGET_ENTITY ' default
+
+        If boxFocusAddress.Text.Length = 0 Then boxFocusAddress.Text = "0"
+        My.Settings.focus_pointer_address = Convert.ToUInt32(boxFocusAddress.Text, 16)
+        If My.Settings.focus_pointer_address = 0 Then My.Settings.focus_pointer_address = Memory.PTR_TO_FOCUS_ENTITY ' default
 
         My.Settings.Save()
         Me.Close()
-
         Overlay.SettingsChanged()
     End Sub
 End Class

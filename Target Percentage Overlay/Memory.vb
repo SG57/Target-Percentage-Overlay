@@ -1,7 +1,13 @@
 ﻿Public Class Memory
-    ' TWEAK THE FOLLOWING MEMORY ADDRESSES AND OFFSETS SHOULD ANYTHING BREAK WITH FUTURE PATCHES!
-    Private Const PTR_TO_TARGET_ENTITY = &H1072770
-    Private Const PTR_TO_FOCUS_ENTITY = &H10727B0
+    '
+    ' Updating Memory Addresses:
+    '   These memory addresses need updating if the overlay stops functioning as a result of a FFXIV patch.
+    '   Aftwards, be sure to increment the VERSION number in Settings.vb, then you're finished with the update.
+    '
+    '   These were the default pointers for the ffxiv.exe process as of 2/1/2014. - Cord
+    '
+    Public Const PTR_TO_TARGET_ENTITY = &H1072770
+    Public Const PTR_TO_FOCUS_ENTITY = &H10727B0
     Private Const ENTITY_OFFSET_HP = &H16A0
     Private Const ENTITY_OFFSET_HP_MAX = &H16A4
     Private Const ENTITY_OFFSET_MP = &H16A8
@@ -19,24 +25,10 @@
     Private ffxiv_proc As Process
     Private ffxiv_proc_hdl As IntPtr = IntPtr.Zero
     Private ffxiv_proc_index As Integer = -1
-    Private ffxiv_ptr_to_target_entity As IntPtr = IntPtr.Zero
-    Private ffxiv_ptr_to_focus_entity As IntPtr = IntPtr.Zero
 
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         DetachFromProcess()
     End Sub
-
-    Public Function SetPointerAddresses(ByVal ptr_to_target_addr As IntPtr, ByVal ptr_to_focus_addr As IntPtr)
-        ffxiv_ptr_to_target_entity = ptr_to_target_addr
-        ffxiv_ptr_to_focus_entity = ptr_to_focus_addr
-
-        If ffxiv_ptr_to_target_entity = IntPtr.Zero Then
-            ffxiv_ptr_to_target_entity = PTR_TO_TARGET_ENTITY
-        End If
-        If ffxiv_ptr_to_focus_entity = IntPtr.Zero Then
-            ffxiv_ptr_to_focus_entity = PTR_TO_FOCUS_ENTITY
-        End If
-    End Function
 
     Public Function AttachToProcess(ByVal index As Integer) As Boolean
         If index <> ffxiv_proc_index Then DetachFromProcess()
@@ -77,9 +69,9 @@
         Dim base_addr As IntPtr = ffxiv_proc.MainModule.BaseAddress
         Select Case entity
             Case Settings.EntityType.TARGET
-                Return GetEntityValue(base_addr + ffxiv_ptr_to_target_entity, value_type)
+                Return GetEntityValue(IntPtr.Add(base_addr, My.Settings.target_pointer_address), value_type)
             Case Settings.EntityType.FOCUS
-                Return GetEntityValue(IntPtr.Add(base_addr, ffxiv_ptr_to_focus_entity), value_type)
+                Return GetEntityValue(IntPtr.Add(base_addr, My.Settings.focus_pointer_address), value_type)
             Case Else
                 Return 0
         End Select

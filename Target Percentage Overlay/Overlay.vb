@@ -10,7 +10,7 @@ Public Class Overlay
     Dim drag_offset_y As Integer
 
     Private Function StringPercent(ByVal current As Integer, ByVal max As Integer) As String
-        Return (100.0 * current / max).ToString("N1") & " %"
+        Return (100.0 * current / max).ToString("0.#") & " %" ' hides trailing zeros
     End Function
 
     Private Function StringValues(ByVal current As Integer, ByVal max As Integer) As String
@@ -67,12 +67,29 @@ Public Class Overlay
         Top = My.Settings.win_y
         text_label.Font = My.Settings.font
         text_label.ForeColor = My.Settings.font_color
-        memory.SetPointerAddresses(My.Settings.target_pointer_address, My.Settings.focus_pointer_address)
         RefreshText()
     End Sub
 
     ' init
     Private Sub Overlay_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' detect if we are running a later version of TPO, meaning the main target and focus target pointers may have changed
+        ' as they may have been broken prior, hence the update.  Ask the user if they'd like to overwrite their current addresses.
+        ' if this is their first run (version_old = 0), don't ask for input, just store the default pointers.
+        If My.Settings.version_old = 0 OrElse (My.Settings.version_old < Settings.VERSION _
+                                                AndAlso MsgBox("I see you are running a newer version of Target Percentage Overlay (v" & Settings.VERSION & ")." & vbCrLf & _
+                                                               vbCrLf & _
+                                                               "This could mean the Main Target and Focus Target memory addresses may needed fixing after a recent FFXIV patch." & vbCrLf & _
+                                                               vbCrLf & _
+                                                               "Would you like to update your current settings to the new memory addresses? (RECOMMENDED)" & vbCrLf & _
+                                                               "If you're not sure, click yes.", MsgBoxStyle.YesNo, "TPO Updated - Update Addresses?") = MsgBoxResult.Yes) _
+        Then
+            My.Settings.target_pointer_address = memory.PTR_TO_TARGET_ENTITY
+            My.Settings.focus_pointer_address = memory.PTR_TO_FOCUS_ENTITY
+        End If
+
+        My.Settings.version_old = Settings.VERSION
+        My.Settings.Save()
+
         SettingsChanged()
     End Sub
 
@@ -144,6 +161,6 @@ Public Class Overlay
                vbCrLf &
                "danakj@orodu.net - (C) 2013 Dana Jansens",
                MsgBoxStyle.Information,
-               "Target Percentage Overlay v" & Settings.VERSION)
+               "Target Percentage Overlay v" & Settings.VERSION.ToString("0.##"))
     End Sub
 End Class

@@ -32,16 +32,16 @@ Partial Class Settings
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.boxFfxivProcIndex = New System.Windows.Forms.TextBox()
         Me.comboTarget = New System.Windows.Forms.ComboBox()
         Me.comboDisplay = New System.Windows.Forms.ComboBox()
         Me.comboResource = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.boxTargetAddress = New System.Windows.Forms.TextBox()
         Me.boxFocusAddress = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'save_button
@@ -51,17 +51,18 @@ Partial Class Settings
         Me.save_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.save_button.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.save_button.Location = New System.Drawing.Point(15, 341)
+        Me.save_button.Location = New System.Drawing.Point(15, 340)
         Me.save_button.Name = "save_button"
-        Me.save_button.Size = New System.Drawing.Size(315, 36)
+        Me.save_button.Size = New System.Drawing.Size(321, 36)
         Me.save_button.TabIndex = 3
         Me.save_button.Text = "Save"
         Me.save_button.UseVisualStyleBackColor = True
         '
         'boxRefreshTimer
         '
+        Me.boxRefreshTimer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxRefreshTimer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxRefreshTimer.Location = New System.Drawing.Point(224, 13)
+        Me.boxRefreshTimer.Location = New System.Drawing.Point(230, 13)
         Me.boxRefreshTimer.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxRefreshTimer.Name = "boxRefreshTimer"
         Me.boxRefreshTimer.Size = New System.Drawing.Size(102, 26)
@@ -140,36 +141,11 @@ Partial Class Settings
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label4, "What resource to draw the percentage from; HP, MP or TP")
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(11, 273)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(118, 20)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Target (in hex) :"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label8, "The address of the pointer pointing to your target's information.")
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(11, 304)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(116, 20)
-        Me.Label9.TabIndex = 20
-        Me.Label9.Text = "Focus (in hex) :"
-        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label9, "The address of the pointer pointing to your focus target's information.")
-        '
         'boxFfxivProcIndex
         '
+        Me.boxFfxivProcIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxFfxivProcIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxFfxivProcIndex.Location = New System.Drawing.Point(224, 52)
+        Me.boxFfxivProcIndex.Location = New System.Drawing.Point(230, 52)
         Me.boxFfxivProcIndex.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxFfxivProcIndex.Name = "boxFfxivProcIndex"
         Me.boxFfxivProcIndex.Size = New System.Drawing.Size(102, 26)
@@ -180,63 +156,49 @@ Partial Class Settings
         '
         'comboTarget
         '
+        Me.comboTarget.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboTarget.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboTarget.FormattingEnabled = True
         Me.comboTarget.Items.AddRange(New Object() {"Main Target", "Focus Target"})
-        Me.comboTarget.Location = New System.Drawing.Point(120, 90)
+        Me.comboTarget.Location = New System.Drawing.Point(126, 90)
         Me.comboTarget.Name = "comboTarget"
         Me.comboTarget.Size = New System.Drawing.Size(206, 28)
         Me.comboTarget.TabIndex = 10
         '
         'comboDisplay
         '
+        Me.comboDisplay.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboDisplay.FormattingEnabled = True
         Me.comboDisplay.Items.AddRange(New Object() {"Current / Max", "Percentage", "Both"})
-        Me.comboDisplay.Location = New System.Drawing.Point(120, 129)
+        Me.comboDisplay.Location = New System.Drawing.Point(126, 129)
         Me.comboDisplay.Name = "comboDisplay"
         Me.comboDisplay.Size = New System.Drawing.Size(206, 28)
         Me.comboDisplay.TabIndex = 14
         '
         'comboResource
         '
+        Me.comboResource.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboResource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboResource.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboResource.FormattingEnabled = True
         Me.comboResource.Items.AddRange(New Object() {"Health", "Mana", "TP"})
-        Me.comboResource.Location = New System.Drawing.Point(120, 168)
+        Me.comboResource.Location = New System.Drawing.Point(126, 168)
         Me.comboResource.Name = "comboResource"
         Me.comboResource.Size = New System.Drawing.Size(206, 28)
         Me.comboResource.TabIndex = 16
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 213)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(161, 20)
-        Me.Label6.TabIndex = 17
-        Me.Label6.Text = "Memory Addresses"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 237)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(249, 20)
-        Me.Label7.TabIndex = 18
-        Me.Label7.Text = "(Leave these as 0 to use defaults)"
-        '
         'boxTargetAddress
         '
+        Me.boxTargetAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxTargetAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxTargetAddress.Location = New System.Drawing.Point(224, 267)
+        Me.boxTargetAddress.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boxTargetAddress.Location = New System.Drawing.Point(162, 32)
         Me.boxTargetAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxTargetAddress.Name = "boxTargetAddress"
-        Me.boxTargetAddress.Size = New System.Drawing.Size(102, 26)
+        Me.boxTargetAddress.Size = New System.Drawing.Size(145, 26)
         Me.boxTargetAddress.TabIndex = 21
         Me.boxTargetAddress.Text = "0"
         Me.boxTargetAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -244,38 +206,78 @@ Partial Class Settings
         '
         'boxFocusAddress
         '
+        Me.boxFocusAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxFocusAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxFocusAddress.Location = New System.Drawing.Point(224, 298)
+        Me.boxFocusAddress.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boxFocusAddress.Location = New System.Drawing.Point(162, 71)
         Me.boxFocusAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxFocusAddress.Name = "boxFocusAddress"
-        Me.boxFocusAddress.Size = New System.Drawing.Size(102, 26)
+        Me.boxFocusAddress.Size = New System.Drawing.Size(145, 26)
         Me.boxFocusAddress.TabIndex = 22
         Me.boxFocusAddress.Text = "0"
         Me.boxFocusAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.boxFocusAddress.WordWrap = False
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.boxFocusAddress)
+        Me.GroupBox1.Controls.Add(Me.boxTargetAddress)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 215)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(314, 108)
+        Me.GroupBox1.TabIndex = 23
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Memory Addresses"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(10, 37)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(101, 20)
+        Me.Label6.TabIndex = 23
+        Me.Label6.Text = "Main Target :"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Label6, resources.GetString("Label6.ToolTip"))
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(10, 76)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(111, 20)
+        Me.Label7.TabIndex = 24
+        Me.Label7.Text = "Focus Target :"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Label7, resources.GetString("Label7.ToolTip"))
+        '
         'Settings
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(345, 392)
-        Me.Controls.Add(Me.boxFocusAddress)
-        Me.Controls.Add(Me.boxTargetAddress)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
+        Me.ClientSize = New System.Drawing.Size(351, 391)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.comboResource)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.comboDisplay)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.comboTarget)
         Me.Controls.Add(Me.boxFfxivProcIndex)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.boxRefreshTimer)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.save_button)
+        Me.Controls.Add(Me.Label2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -286,6 +288,8 @@ Partial Class Settings
         Me.Padding = New System.Windows.Forms.Padding(15)
         Me.Text = "Target Percentage Overlay Settings"
         Me.TopMost = True
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -302,10 +306,9 @@ Partial Class Settings
 	Friend WithEvents comboDisplay As System.Windows.Forms.ComboBox
 	Friend WithEvents comboResource As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents boxTargetAddress As System.Windows.Forms.TextBox
     Friend WithEvents boxFocusAddress As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

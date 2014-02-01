@@ -29,10 +29,13 @@
     <Setting Name="font" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)">Microsoft Sans Serif, 25.8000011pt, style=Bold</Value>
     </Setting>
-    <Setting Name="target_pointer_address" Type="System.Int32" Scope="User">
+    <Setting Name="target_pointer_address" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="focus_pointer_address" Type="System.Int32" Scope="User">
+    <Setting Name="focus_pointer_address" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="version_old" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
