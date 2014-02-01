@@ -1,39 +1,43 @@
 ﻿Public Class Settings
 
-	Public Const TARGET_MAIN = 0
-	Public Const TARGET_FOCUS = 1
+    Public Enum EntityType
+        TARGET = 0
+        FOCUS = 1
+    End Enum
 
-	Public Const RES_HP = 0
-	Public Const RES_MP = 1
-	Public Const RES_TP = 2
+    Public Enum ResourceType
+        HP = 0
+        MP = 1
+        TP = 2
+    End Enum
 
+    Public Enum DisplayType
+        VALUES = 0
+        PERCENT = 1
+        VALUES_AND_PERCENT = 2
+    End Enum
+	
 
-	' init from settings prefs
-	Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-		boxRefreshTimer.Text = My.Settings.refresh
-		boxFfxivProcIndex.Text = My.Settings.ffxiv_process
-		comboTarget.SelectedIndex = My.Settings.target
-		comboDisplay.SelectedIndex = My.Settings.display
-		comboResource.SelectedIndex = My.Settings.resource
-	End Sub
+    ' init from settings prefs
+    Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        boxRefreshTimer.Text = My.Settings.refresh
+        boxFfxivProcIndex.Text = My.Settings.ffxiv_process
+        comboTarget.SelectedIndex = 0 + My.Settings.target
+        comboDisplay.SelectedIndex = 0 + My.Settings.display
+        comboResource.SelectedIndex = 0 + My.Settings.resource
+    End Sub
 
-	' save click
-	Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-		My.Settings.refresh = boxRefreshTimer.Text
-		Overlay.Timer1.Interval = boxRefreshTimer.Text
+    ' save click
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        My.Settings.refresh = boxRefreshTimer.Text
+        My.Settings.ffxiv_process = boxFfxivProcIndex.Text
+        My.Settings.target = CType(comboTarget.SelectedIndex, EntityType)
+        My.Settings.display = CType(comboDisplay.SelectedIndex, DisplayType)
+        My.Settings.resource = CType(comboResource.SelectedIndex, ResourceType)
 
-		My.Settings.ffxiv_process = boxFfxivProcIndex.Text ' force re-attach
+        My.Settings.Save()
+        Me.Close()
 
-		My.Settings.target = comboTarget.SelectedIndex
-
-		My.Settings.display = comboDisplay.SelectedIndex
-
-		My.Settings.resource = comboResource.SelectedIndex
-
-		' IMPORTANT
-		Overlay.forceReattach()
-
-		My.Settings.Save()
-		Me.Close()
-	End Sub
+        Overlay.SettingsChanged()
+    End Sub
 End Class

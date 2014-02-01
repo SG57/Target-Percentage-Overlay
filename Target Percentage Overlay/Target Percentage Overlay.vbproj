@@ -75,6 +75,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Memory.vb" />
     <Compile Include="Overlay.vb">
       <SubType>Form</SubType>
     </Compile>
