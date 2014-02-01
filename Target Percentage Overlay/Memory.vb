@@ -55,6 +55,18 @@
         TP
     End Enum
 
+    Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Int32
+        Dim base_addr As Int32 = ffxiv_proc.MainModule.BaseAddress
+        Select Case entity
+            Case Settings.EntityType.TARGET
+                Return GetEntityValue(base_addr + PTR_TO_TARGET_ENTITY, value_type)
+            Case Settings.EntityType.FOCUS
+                Return GetEntityValue(IntPtr.Add(base_addr, PTR_TO_FOCUS_ENTITY), value_type)
+            Case Else
+                Return 0
+        End Select
+    End Function
+
     Private Function ReadInt32(ByVal addr As IntPtr) As Int32
         Dim _dataBytes(3) As Byte
         ReadProcessMemory(ffxiv_proc_hdl, addr, _dataBytes, 4, vbNull)
@@ -80,18 +92,4 @@
                 Return 0
         End Select
     End Function
-
-    Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Int32
-        Dim base_addr As Int32 = ffxiv_proc.MainModule.BaseAddress
-        Select Case entity
-            Case Settings.EntityType.TARGET
-                Return GetEntityValue(base_addr + PTR_TO_TARGET_ENTITY, value_type)
-            Case Settings.EntityType.FOCUS
-                Return GetEntityValue(IntPtr.Add(base_addr, PTR_TO_FOCUS_ENTITY), value_type)
-            Case Else
-                Return 0
-        End Select
-    End Function
-
-
 End Class
