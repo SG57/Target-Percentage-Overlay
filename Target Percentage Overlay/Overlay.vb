@@ -60,17 +60,17 @@ Public Class Overlay
 	Const MEM_TARGET_TP = 4
 
 	Dim MEMORY_OFFSETS As Int32()()() = {
-	({({&H1071770, &H16A0}),
-	({&H1071770, &H16A4}),
-	({&H1071770, &H16A8}),
-	({&H1071770, &H16AC}),
-	({&H1071770, &H16B0})}),
+	({({&H1072770, &H16A0}),
+	({&H1072770, &H16A4}),
+	({&H1072770, &H16A8}),
+	({&H1072770, &H16AC}),
+	({&H1072770, &H16B0})}),
  _
-	({({&H10717B0, &H16A0}),
-	({&H10717B0, &H16A4}),
-	({&H10717B0, &H16A8}),
-	({&H10717B0, &H16AC}),
-	({&H10717B0, &H16B0})})}
+	({({&H10727B0, &H16A0}),
+	({&H10727B0, &H16A4}),
+	({&H10727B0, &H16A8}),
+	({&H10727B0, &H16AC}),
+	({&H10727B0, &H16B0})})}
 
 	Public Function ReadInt32(ByVal addr As IntPtr) As Int32
 		Dim _dataBytes(3) As Byte
