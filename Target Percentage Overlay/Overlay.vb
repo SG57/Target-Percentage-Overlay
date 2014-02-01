@@ -10,7 +10,7 @@ Public Class Overlay
     Dim drag_offset_y As Integer
 
     Private Function StringPercent(ByVal current As Integer, ByVal max As Integer) As String
-        Return (100.0 * current / max).ToString("0.#") & " %" ' hides trailing zeros
+        Return (100.0 * current / max).ToString("N1") & " %"
     End Function
 
     Private Function StringValues(ByVal current As Integer, ByVal max As Integer) As String
