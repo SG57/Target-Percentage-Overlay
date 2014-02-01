@@ -96,24 +96,24 @@ Public Class Overlay
     End Sub
 
     Private Sub ChangeFontColorMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_change_font_color_menu_item.Click
-        Dim cDialog As New ColorDialog()
-        cDialog.Color = Me.text_label.ForeColor
+        Dim color_dialog As New ColorDialog()
+        color_dialog.Color = Me.text_label.ForeColor
 
-        If cDialog.ShowDialog() = DialogResult.OK Then
-            My.Settings.font_color = cDialog.Color
-            My.Settings.Save()
-            SettingsChanged()
-        End If
+        If color_dialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then Return
+
+        My.Settings.font_color = color_dialog.Color
+        My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub ChangeFontMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_change_font_menu_item.Click
         font_dialog.Font = Me.text_label.Font
 
-        If font_dialog.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
-            My.Settings.font = font_dialog.Font
-            My.Settings.Save()
-            SettingsChanged()
-        End If
+        If font_dialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then Return
+
+        My.Settings.font = font_dialog.Font
+        My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub CloseMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_close_menu_item.Click
