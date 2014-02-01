@@ -11,10 +11,10 @@
     <Setting Name="win_y" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="refresh_interval" Type="System.Int32" Scope="User">
+    <Setting Name="refresh_interval" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">250</Value>
     </Setting>
-    <Setting Name="ffxiv_process_index" Type="System.Int32" Scope="User">
+    <Setting Name="ffxiv_process_index" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="entity" Type="System.Int32" Scope="User">

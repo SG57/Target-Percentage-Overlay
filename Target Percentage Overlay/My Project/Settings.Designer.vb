@@ -93,9 +93,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("250")>  _
-        Public Property refresh_interval() As Integer
+        Public Property refresh_interval() As UInteger
             Get
-                Return CType(Me("refresh_interval"),Integer)
+                Return CType(Me("refresh_interval"),UInteger)
             End Get
             Set
                 Me("refresh_interval") = value
@@ -105,9 +105,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property ffxiv_process_index() As Integer
+        Public Property ffxiv_process_index() As UInteger
             Get
-                Return CType(Me("ffxiv_process_index"),Integer)
+                Return CType(Me("ffxiv_process_index"),UInteger)
             End Get
             Set
                 Me("ffxiv_process_index") = value
