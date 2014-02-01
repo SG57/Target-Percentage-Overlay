@@ -62,8 +62,8 @@ Public Class Overlay
     End Sub
 
     Public Sub SettingsChanged()
-        memory.DetachFromProcess()
         Me.refresh_timer.Interval = My.Settings.refresh
+        RefreshText()
     End Sub
 
     ' init

@@ -18,12 +18,14 @@
 
     Private ffxiv_proc As Process
     Private ffxiv_proc_hdl As IntPtr = IntPtr.Zero
+    Private ffxiv_proc_index As Integer = -1
 
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         DetachFromProcess()
     End Sub
 
     Public Function AttachToProcess(ByVal index As Integer) As Boolean
+        If index <> ffxiv_proc_index Then DetachFromProcess()
         If ffxiv_proc_hdl <> IntPtr.Zero Then Return True ' attached already
 
         Try
@@ -32,6 +34,7 @@
                 If Not IsNothing(procs(index)) Then
                     ffxiv_proc = procs(index)
                     ffxiv_proc_hdl = OpenProcess(PROCESS_VM_READ Or PROCESS_QUERY_INFORMATION, False, ffxiv_proc.Id)
+                    ffxiv_proc_index = index
                 End If
             End If
         Catch ex As Exception
@@ -45,6 +48,7 @@
     Public Sub DetachFromProcess()
         If ffxiv_proc_hdl <> IntPtr.Zero Then CloseHandle(ffxiv_proc_hdl)
         ffxiv_proc_hdl = IntPtr.Zero
+        ffxiv_proc_index = -1
     End Sub
 
     Public Enum EntityValueType
