@@ -58,7 +58,7 @@ Public Class Overlay
     End Function
 
     Private Sub RefreshText()
-        Me.text_label.Text = GetOverlayText()
+        text_label.Text = GetOverlayText()
     End Sub
 
     Public Sub SettingsChanged()
@@ -85,11 +85,10 @@ Public Class Overlay
 
     Private Sub TextLabel_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles text_label.MouseMove
         If Not drag_active Then Return
-        Me.Left = Windows.Forms.Cursor.Position.X - drag_offset_x
-        Me.Top = Windows.Forms.Cursor.Position.Y - drag_offset_y
-        My.Settings.win_x = Me.Left
-        My.Settings.win_y = Me.Top
+        My.Settings.win_x = Windows.Forms.Cursor.Position.X - drag_offset_x
+        My.Settings.win_y = Windows.Forms.Cursor.Position.Y - drag_offset_y
         My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub TextLabel_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles text_label.MouseUp
@@ -101,9 +100,9 @@ Public Class Overlay
         cDialog.Color = Me.text_label.ForeColor
 
         If cDialog.ShowDialog() = DialogResult.OK Then
-            Me.text_label.ForeColor = cDialog.Color
-            My.Settings.font_color = Me.text_label.ForeColor
+            My.Settings.font_color = cDialog.Color
             My.Settings.Save()
+            SettingsChanged()
         End If
     End Sub
 
@@ -111,9 +110,9 @@ Public Class Overlay
         font_dialog.Font = Me.text_label.Font
 
         If font_dialog.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
-            Me.text_label.Font = font_dialog.Font
-            My.Settings.font = Me.text_label.Font
+            My.Settings.font = font_dialog.Font
             My.Settings.Save()
+            SettingsChanged()
         End If
     End Sub
 
