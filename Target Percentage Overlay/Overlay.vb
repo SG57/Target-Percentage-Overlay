@@ -10,7 +10,7 @@ Public Class Overlay
     Dim drag_offset_y As Integer
 
     Private Function StringPercent(ByVal current As Integer, ByVal max As Integer) As String
-        Return (100.0 * current / max).ToString("0.#") & " %" ' hides trailing zeros
+        Return (100.0 * current / max).ToString("N1") & " %"
     End Function
 
     Private Function StringValues(ByVal current As Integer, ByVal max As Integer) As String
@@ -58,7 +58,7 @@ Public Class Overlay
     End Function
 
     Private Sub RefreshText()
-        Me.text_label.Text = GetOverlayText()
+        text_label.Text = GetOverlayText()
     End Sub
 
     Public Sub SettingsChanged()
@@ -72,24 +72,7 @@ Public Class Overlay
 
     ' init
     Private Sub Overlay_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' detect if we are running a later version of TPO, meaning the main target and focus target pointers may have changed
-        ' as they may have been broken prior, hence the update.  Ask the user if they'd like to overwrite their current addresses.
-        ' if this is their first run (version_old = 0), don't ask for input, just store the default pointers.
-        If My.Settings.version_old = 0 OrElse (My.Settings.version_old < Settings.VERSION _
-                                                AndAlso MsgBox("I see you are running a newer version of Target Percentage Overlay (v" & Settings.VERSION & ")." & vbCrLf & _
-                                                               vbCrLf & _
-                                                               "This could mean the Main Target and Focus Target memory addresses may needed fixing after a recent FFXIV patch." & vbCrLf & _
-                                                               vbCrLf & _
-                                                               "Would you like to update your current settings to the new memory addresses? (RECOMMENDED)" & vbCrLf & _
-                                                               "If you're not sure, click yes.", MsgBoxStyle.YesNo, "TPO Updated - Update Addresses?") = MsgBoxResult.Yes) _
-        Then
-            My.Settings.target_pointer_address = memory.PTR_TO_TARGET_ENTITY
-            My.Settings.focus_pointer_address = memory.PTR_TO_FOCUS_ENTITY
-        End If
-
-        My.Settings.version_old = Settings.VERSION
-        My.Settings.Save()
-
+        Settings.OnStartup()
         SettingsChanged()
     End Sub
 
@@ -102,11 +85,10 @@ Public Class Overlay
 
     Private Sub TextLabel_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles text_label.MouseMove
         If Not drag_active Then Return
-        Me.Left = Windows.Forms.Cursor.Position.X - drag_offset_x
-        Me.Top = Windows.Forms.Cursor.Position.Y - drag_offset_y
-        My.Settings.win_x = Me.Left
-        My.Settings.win_y = Me.Top
+        My.Settings.win_x = Windows.Forms.Cursor.Position.X - drag_offset_x
+        My.Settings.win_y = Windows.Forms.Cursor.Position.Y - drag_offset_y
         My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub TextLabel_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles text_label.MouseUp
@@ -114,24 +96,24 @@ Public Class Overlay
     End Sub
 
     Private Sub ChangeFontColorMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_change_font_color_menu_item.Click
-        Dim cDialog As New ColorDialog()
-        cDialog.Color = Me.text_label.ForeColor
+        Dim color_dialog As New ColorDialog()
+        color_dialog.Color = Me.text_label.ForeColor
 
-        If cDialog.ShowDialog() = DialogResult.OK Then
-            Me.text_label.ForeColor = cDialog.Color
-            My.Settings.font_color = Me.text_label.ForeColor
-            My.Settings.Save()
-        End If
+        If color_dialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then Return
+
+        My.Settings.font_color = color_dialog.Color
+        My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub ChangeFontMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_change_font_menu_item.Click
         font_dialog.Font = Me.text_label.Font
 
-        If font_dialog.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
-            Me.text_label.Font = font_dialog.Font
-            My.Settings.font = Me.text_label.Font
-            My.Settings.Save()
-        End If
+        If font_dialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then Return
+
+        My.Settings.font = font_dialog.Font
+        My.Settings.Save()
+        SettingsChanged()
     End Sub
 
     Private Sub CloseMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_close_menu_item.Click

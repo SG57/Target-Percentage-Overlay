@@ -6,25 +6,21 @@
     '
     '   These were the default pointers for the ffxiv.exe process as of 2/1/2014. - Cord
     '
-    Public Const PTR_TO_TARGET_ENTITY = &H1072770
-    Public Const PTR_TO_FOCUS_ENTITY = &H10727B0
+    Public Const DEFAULT_PTR_TO_TARGET_ENTITY = &H1072770
+    Public Const DEFAULT_PTR_TO_FOCUS_ENTITY = &H10727B0
     Private Const ENTITY_OFFSET_HP = &H16A0
     Private Const ENTITY_OFFSET_HP_MAX = &H16A4
     Private Const ENTITY_OFFSET_MP = &H16A8
     Private Const ENTITY_OFFSET_MP_MAX = &H16AC
     Private Const ENTITY_OFFSET_TP = &H16B0
 
-    Private Declare Function OpenProcess Lib "kernel32.dll" (ByVal dwDesiredAcess As UInt32, ByVal bInheritHandle As Boolean, ByVal dwProcessId As Int32) As IntPtr
-    Private Declare Function ReadProcessMemory Lib "kernel32" (ByVal hProcess As IntPtr, ByVal lpBaseAddress As IntPtr, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Boolean
-    Private Declare Function CloseHandle Lib "kernel32.dll" (ByVal hObject As IntPtr) As Boolean
-
-    Private Const FFXIV_PROCESS As String = "ffxiv"
-    Private Const PROCESS_VM_READ As UInteger = 16
-    Private Const PROCESS_QUERY_INFORMATION As UInteger = 1024
-
-    Private ffxiv_proc As Process
-    Private ffxiv_proc_hdl As IntPtr = IntPtr.Zero
-    Private ffxiv_proc_index As Integer = -1
+    Public Enum EntityValueType
+        HP
+        HP_MAX
+        MP
+        MP_MAX
+        TP
+    End Enum
 
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         DetachFromProcess()
@@ -56,14 +52,6 @@
         ffxiv_proc_hdl = IntPtr.Zero
         ffxiv_proc_index = -1
     End Sub
-
-    Public Enum EntityValueType
-        HP
-        HP_MAX
-        MP
-        MP_MAX
-        TP
-    End Enum
 
     Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Integer
         Dim base_addr As IntPtr = ffxiv_proc.MainModule.BaseAddress
@@ -102,4 +90,16 @@
                 Return 0
         End Select
     End Function
+
+    Private Declare Function OpenProcess Lib "kernel32.dll" (ByVal dwDesiredAcess As UInt32, ByVal bInheritHandle As Boolean, ByVal dwProcessId As Int32) As IntPtr
+    Private Declare Function ReadProcessMemory Lib "kernel32" (ByVal hProcess As IntPtr, ByVal lpBaseAddress As IntPtr, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Boolean
+    Private Declare Function CloseHandle Lib "kernel32.dll" (ByVal hObject As IntPtr) As Boolean
+
+    Private Const FFXIV_PROCESS As String = "ffxiv"
+    Private Const PROCESS_VM_READ As UInteger = 16
+    Private Const PROCESS_QUERY_INFORMATION As UInteger = 1024
+
+    Private ffxiv_proc As Process
+    Private ffxiv_proc_hdl As IntPtr = IntPtr.Zero
+    Private ffxiv_proc_index As Integer = -1
 End Class
