@@ -19,8 +19,8 @@ Public Class Overlay
 
     Private Function GetOverlayText() As String
         Try
-            If Not memory.AttachToProcess(My.Settings.ffxiv_process) Then
-                Return "FFXIV.exe #" & My.Settings.ffxiv_process & " Not Running..."
+            If Not memory.AttachToProcess(My.Settings.ffxiv_process_index) Then
+                Return "FFXIV.exe #" & My.Settings.ffxiv_process_index & " Not Running..."
             End If
 
             Dim current = 0
@@ -28,13 +28,13 @@ Public Class Overlay
 
             Select Case My.Settings.resource
                 Case Settings.ResourceType.HP
-                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
-                    max = memory.GetValue(My.Settings.target, memory.EntityValueType.HP_MAX)
+                    current = memory.GetValue(My.Settings.entity, memory.EntityValueType.HP)
+                    max = memory.GetValue(My.Settings.entity, memory.EntityValueType.HP_MAX)
                 Case Settings.ResourceType.MP
-                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.MP)
-                    max = memory.GetValue(My.Settings.target, memory.EntityValueType.MP_MAX)
+                    current = memory.GetValue(My.Settings.entity, memory.EntityValueType.MP)
+                    max = memory.GetValue(My.Settings.entity, memory.EntityValueType.MP_MAX)
                 Case Settings.ResourceType.TP
-                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
+                    current = memory.GetValue(My.Settings.entity, memory.EntityValueType.HP)
                     max = 1000
             End Select
 
@@ -62,7 +62,7 @@ Public Class Overlay
     End Sub
 
     Public Sub SettingsChanged()
-        Me.refresh_timer.Interval = My.Settings.refresh
+        Me.refresh_timer.Interval = My.Settings.refresh_interval
         RefreshText()
     End Sub
 
@@ -71,7 +71,7 @@ Public Class Overlay
         Me.Left = My.Settings.win_x
         Me.Top = My.Settings.win_y
 
-        Me.refresh_timer.Interval = My.Settings.refresh
+        Me.refresh_timer.Interval = My.Settings.refresh_interval
 
         Me.text_label.Font = My.Settings.font
         Me.text_label.ForeColor = My.Settings.font_color
