@@ -55,7 +55,7 @@ Partial Class Settings
         Me.boxRefreshTimer.Size = New System.Drawing.Size(102, 26)
         Me.boxRefreshTimer.TabIndex = 7
         Me.boxRefreshTimer.Text = "2000"
-        Me.boxRefreshTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.boxRefreshTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.boxRefreshTimer.WordWrap = False
         '
         'Label5
@@ -164,7 +164,7 @@ Partial Class Settings
         Me.boxFfxivProcIndex.Size = New System.Drawing.Size(102, 26)
         Me.boxFfxivProcIndex.TabIndex = 9
         Me.boxFfxivProcIndex.Text = "0"
-        Me.boxFfxivProcIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.boxFfxivProcIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.boxFfxivProcIndex.WordWrap = False
         '
         'comboTarget
@@ -204,28 +204,28 @@ Partial Class Settings
         '
         Me.boxTargetAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxTargetAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxTargetAddress.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boxTargetAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.boxTargetAddress.Location = New System.Drawing.Point(162, 32)
         Me.boxTargetAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxTargetAddress.Name = "boxTargetAddress"
         Me.boxTargetAddress.Size = New System.Drawing.Size(145, 26)
         Me.boxTargetAddress.TabIndex = 21
         Me.boxTargetAddress.Text = "0"
-        Me.boxTargetAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.boxTargetAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.boxTargetAddress.WordWrap = False
         '
         'boxFocusAddress
         '
         Me.boxFocusAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.boxFocusAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxFocusAddress.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boxFocusAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.boxFocusAddress.Location = New System.Drawing.Point(162, 71)
         Me.boxFocusAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.boxFocusAddress.Name = "boxFocusAddress"
         Me.boxFocusAddress.Size = New System.Drawing.Size(145, 26)
         Me.boxFocusAddress.TabIndex = 22
         Me.boxFocusAddress.Text = "0"
-        Me.boxFocusAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.boxFocusAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.boxFocusAddress.WordWrap = False
         '
         'GroupBox1
