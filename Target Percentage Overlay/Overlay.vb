@@ -9,6 +9,14 @@ Public Class Overlay
     Dim drag_offset_x As Integer
     Dim drag_offset_y As Integer
 
+    Private Function StringPercent(ByVal current As Integer, ByVal max As Integer) As String
+        Return (100.0 * current / max).ToString("N1")
+    End Function
+
+    Private Function StringValues(ByVal current As Integer, ByVal max As Integer) As String
+        Return current.ToString("N0") & " / " & max.ToString("N0")
+    End Function
+
     Private Function GetOverlayText() As String
         Try
             If Not memory.AttachToProcess(My.Settings.ffxiv_process) Then
@@ -21,10 +29,10 @@ Public Class Overlay
             Select Case My.Settings.resource
                 Case Settings.ResourceType.HP
                     current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
-                    max = memory.GetValue(My.Settings.target, Memory.EntityValueType.HP_MAX)
+                    max = memory.GetValue(My.Settings.target, memory.EntityValueType.HP_MAX)
                 Case Settings.ResourceType.MP
                     current = memory.GetValue(My.Settings.target, memory.EntityValueType.MP)
-                    max = memory.GetValue(My.Settings.target, Memory.EntityValueType.MP_MAX)
+                    max = memory.GetValue(My.Settings.target, memory.EntityValueType.MP_MAX)
                 Case Settings.ResourceType.TP
                     current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
                     max = 1000
@@ -32,15 +40,13 @@ Public Class Overlay
 
             If max = 0 Then Return "--"
 
-            Dim values As String = current.ToString("N0") & " / " & max.ToString("N0")
-            Dim percent As String = (100.0 * current / max).ToString("N1")
             Select Case My.Settings.display
                 Case Settings.DisplayType.PERCENT
-                    Return percent
+                    Return StringPercent(current, max)
                 Case Settings.DisplayType.VALUES
-                    Return values
+                    Return StringValues(current, max)
                 Case Settings.DisplayType.VALUES_AND_PERCENT
-                    Return values & vbCrLf & percent
+                    Return StringValues(current, max) & vbCrLf & StringPercent(current, max)
                 Case Else
                     Return "--"
             End Select
