@@ -55,7 +55,7 @@
 
     Private Function CheckIfUserWantsToResetPointers() As Boolean
         Dim result As MsgBoxResult =
-            MsgBox("I see you are running a newer version of Target Percentage Overlay (v" & VERSION & ")." &
+            MsgBox("I see you are running a newer version of Target Percentage Overlay (v" & Settings.VERSION.ToString("0.##") & ")." &
                    vbCrLf & vbCrLf &
                    "This could mean the Main Target and Focus Target memory addresses may needed fixing after a recent FFXIV patch." &
                    vbCrLf & vbCrLf &
