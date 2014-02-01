@@ -171,7 +171,6 @@ Partial Class Settings
         '
         Me.comboTarget.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.comboTarget.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboTarget.FormattingEnabled = True
         Me.comboTarget.Items.AddRange(New Object() {"Main Target", "Focus Target"})
         Me.comboTarget.Location = New System.Drawing.Point(126, 90)
@@ -183,7 +182,6 @@ Partial Class Settings
         '
         Me.comboDisplay.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.comboDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboDisplay.FormattingEnabled = True
         Me.comboDisplay.Items.AddRange(New Object() {"Current / Max", "Percentage", "Both"})
         Me.comboDisplay.Location = New System.Drawing.Point(126, 129)
@@ -195,7 +193,6 @@ Partial Class Settings
         '
         Me.comboResource.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboResource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.comboResource.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.comboResource.FormattingEnabled = True
         Me.comboResource.Items.AddRange(New Object() {"Health", "Mana", "TP"})
         Me.comboResource.Location = New System.Drawing.Point(126, 168)
