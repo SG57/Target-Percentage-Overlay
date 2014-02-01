@@ -15,25 +15,25 @@ Public Class Overlay
                 Return "FFXIV.exe #" & My.Settings.ffxiv_process & " Not Running..."
             End If
 
-            Dim curr = 0
+            Dim current = 0
             Dim max = 0
 
             Select Case My.Settings.resource
                 Case Settings.ResourceType.HP
-                    curr = memory.GetValue(My.Settings.target, Memory.EntityValueType.HP)
+                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
                     max = memory.GetValue(My.Settings.target, Memory.EntityValueType.HP_MAX)
                 Case Settings.ResourceType.MP
-                    curr = memory.GetValue(My.Settings.target, Memory.EntityValueType.MP)
+                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.MP)
                     max = memory.GetValue(My.Settings.target, Memory.EntityValueType.MP_MAX)
                 Case Settings.ResourceType.TP
-                    curr = memory.GetValue(My.Settings.target, Memory.EntityValueType.HP)
+                    current = memory.GetValue(My.Settings.target, memory.EntityValueType.HP)
                     max = 1000
             End Select
 
             If max = 0 Then Return "--"
 
-            Dim values As String = curr.ToString("N0") & " / " & max.ToString("N0")
-            Dim percent As String = (100.0 * curr / max).ToString("N1")
+            Dim values As String = current.ToString("N0") & " / " & max.ToString("N0")
+            Dim percent As String = (100.0 * current / max).ToString("N1")
             Select Case My.Settings.display
                 Case Settings.DisplayType.PERCENT
                     Return percent
