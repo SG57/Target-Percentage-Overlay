@@ -19,10 +19,24 @@
     Private ffxiv_proc As Process
     Private ffxiv_proc_hdl As IntPtr = IntPtr.Zero
     Private ffxiv_proc_index As Integer = -1
+    Private ffxiv_ptr_to_target_entity As IntPtr = IntPtr.Zero
+    Private ffxiv_ptr_to_focus_entity As IntPtr = IntPtr.Zero
 
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         DetachFromProcess()
     End Sub
+
+    Public Function SetPointerAddresses(ByVal ptr_to_target_addr As IntPtr, ByVal ptr_to_focus_addr As IntPtr)
+        ffxiv_ptr_to_target_entity = ptr_to_target_addr
+        ffxiv_ptr_to_focus_entity = ptr_to_focus_addr
+
+        If ffxiv_ptr_to_target_entity = IntPtr.Zero Then
+            ffxiv_ptr_to_target_entity = PTR_TO_TARGET_ENTITY
+        End If
+        If ffxiv_ptr_to_focus_entity = IntPtr.Zero Then
+            ffxiv_ptr_to_focus_entity = PTR_TO_FOCUS_ENTITY
+        End If
+    End Function
 
     Public Function AttachToProcess(ByVal index As Integer) As Boolean
         If index <> ffxiv_proc_index Then DetachFromProcess()
@@ -59,13 +73,13 @@
         TP
     End Enum
 
-    Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Int32
-        Dim base_addr As Int32 = ffxiv_proc.MainModule.BaseAddress
+    Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Integer
+        Dim base_addr As IntPtr = ffxiv_proc.MainModule.BaseAddress
         Select Case entity
             Case Settings.EntityType.TARGET
-                Return GetEntityValue(base_addr + PTR_TO_TARGET_ENTITY, value_type)
+                Return GetEntityValue(base_addr + ffxiv_ptr_to_target_entity, value_type)
             Case Settings.EntityType.FOCUS
-                Return GetEntityValue(IntPtr.Add(base_addr, PTR_TO_FOCUS_ENTITY), value_type)
+                Return GetEntityValue(IntPtr.Add(base_addr, ffxiv_ptr_to_focus_entity), value_type)
             Case Else
                 Return 0
         End Select
@@ -77,8 +91,8 @@
         Return BitConverter.ToInt32(_dataBytes, 0)
     End Function
 
-    Private Function GetEntityValue(ByVal entity_ptr_addr As Int32, ByVal value_type As EntityValueType) As Int32
-        Dim entity_addr As Int32 = ReadInt32(entity_ptr_addr)
+    Private Function GetEntityValue(ByVal entity_ptr_addr As IntPtr, ByVal value_type As EntityValueType) As Integer
+        Dim entity_addr As IntPtr = ReadInt32(entity_ptr_addr)
         If entity_addr = 0 Then Return 0
 
         Select Case value_type

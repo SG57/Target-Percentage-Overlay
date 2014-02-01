@@ -62,21 +62,18 @@ Public Class Overlay
     End Sub
 
     Public Sub SettingsChanged()
-        Me.refresh_timer.Interval = My.Settings.refresh_interval
+        refresh_timer.Interval = My.Settings.refresh_interval
+        Left = My.Settings.win_x
+        Top = My.Settings.win_y
+        text_label.Font = My.Settings.font
+        text_label.ForeColor = My.Settings.font_color
+        memory.SetPointerAddresses(My.Settings.target_pointer_address, My.Settings.focus_pointer_address)
         RefreshText()
     End Sub
 
     ' init
     Private Sub Overlay_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Left = My.Settings.win_x
-        Me.Top = My.Settings.win_y
-
-        Me.refresh_timer.Interval = My.Settings.refresh_interval
-
-        Me.text_label.Font = My.Settings.font
-        Me.text_label.ForeColor = My.Settings.font_color
-
-        RefreshText()
+        SettingsChanged()
     End Sub
 
 

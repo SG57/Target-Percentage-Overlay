@@ -25,6 +25,8 @@
         comboTarget.SelectedIndex = 0 + My.Settings.entity
         comboDisplay.SelectedIndex = 0 + My.Settings.display
         comboResource.SelectedIndex = 0 + My.Settings.resource
+        boxTargetAddress.Text = Conversion.Hex(My.Settings.target_pointer_address)
+        boxFocusAddress.Text = Conversion.Hex(My.Settings.focus_pointer_address)
     End Sub
 
     ' save click
@@ -35,7 +37,7 @@
         My.Settings.display = CType(comboDisplay.SelectedIndex, DisplayType)
         My.Settings.resource = CType(comboResource.SelectedIndex, ResourceType)
         My.Settings.target_pointer_address = Convert.ToInt32(boxTargetAddress.Text, 16)
-        My.Settings.focus_pointer_address = Convert.ToInt32(boxTargetAddress.Text, 16)
+        My.Settings.focus_pointer_address = Convert.ToInt32(boxFocusAddress.Text, 16)
 
         My.Settings.Save()
         Me.Close()
