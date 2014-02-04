@@ -30,19 +30,31 @@
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ok_button.Click
-        If Not UInteger.TryParse(boxFfxivProcIndex.Text, My.Settings.ffxiv_process_index) Then My.Settings.ffxiv_process_index = 0 ' default
-        If Not UInteger.TryParse(boxRefreshTimer.Text, My.Settings.refresh_interval) Then My.Settings.refresh_interval = 250 ' default
+        Dim ffxiv_process_index As UInteger
+        Dim refresh_interval As UInteger
+
+        If Not UInteger.TryParse(boxFfxivProcIndex.Text, ffxiv_process_index) Then
+            MsgBox("Process index should be a positive whole number", MsgBoxStyle.OkOnly, "Invalid process index")
+            Return
+        End If
+        If Not UInteger.TryParse(boxRefreshTimer.Text, refresh_interval) Then
+            MsgBox("Refresh interval should be a positive whole number", MsgBoxStyle.OkOnly, "Invalid refresh interval")
+            Return
+        End If
+
+        Dim target_pointer_address As UInt32 = Convert.ToUInt32(boxTargetAddress.Text, 16)
+        Dim focus_pointer_address As UInt32 = Convert.ToUInt32(boxFocusAddress.Text, 16)
+
+        If target_pointer_address = 0 Then target_pointer_address = Memory.DEFAULT_PTR_TO_TARGET_ENTITY
+        If focus_pointer_address = 0 Then focus_pointer_address = Memory.DEFAULT_PTR_TO_FOCUS_ENTITY
+
+        My.Settings.ffxiv_process_index = ffxiv_process_index
+        My.Settings.refresh_interval = refresh_interval
         My.Settings.entity = CType(comboTarget.SelectedIndex, EntityType)
         My.Settings.display = CType(comboDisplay.SelectedIndex, DisplayType)
         My.Settings.resource = CType(comboResource.SelectedIndex, ResourceType)
-
-        If boxTargetAddress.Text.Length = 0 Then boxTargetAddress.Text = "0"
-        My.Settings.target_pointer_address = Convert.ToUInt32(boxTargetAddress.Text, 16)
-        If My.Settings.target_pointer_address = 0 Then My.Settings.target_pointer_address = Memory.DEFAULT_PTR_TO_TARGET_ENTITY
-
-        If boxFocusAddress.Text.Length = 0 Then boxFocusAddress.Text = "0"
-        My.Settings.focus_pointer_address = Convert.ToUInt32(boxFocusAddress.Text, 16)
-        If My.Settings.focus_pointer_address = 0 Then My.Settings.focus_pointer_address = Memory.DEFAULT_PTR_TO_FOCUS_ENTITY
+        My.Settings.target_pointer_address = target_pointer_address
+        My.Settings.focus_pointer_address = focus_pointer_address
 
         My.Settings.Save()
         Me.Close()
