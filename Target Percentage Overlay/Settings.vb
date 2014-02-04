@@ -30,7 +30,6 @@
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ok_button.Click
-
         If Not UInteger.TryParse(boxFfxivProcIndex.Text, My.Settings.ffxiv_process_index) Then My.Settings.ffxiv_process_index = 0 ' default
         If Not UInteger.TryParse(boxRefreshTimer.Text, My.Settings.refresh_interval) Then My.Settings.refresh_interval = 250 ' default
         My.Settings.entity = CType(comboTarget.SelectedIndex, EntityType)
