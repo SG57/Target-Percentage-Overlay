@@ -6,13 +6,13 @@
     '
     '   These were the default pointers for the ffxiv.exe process as of 2/1/2014. - Cord
     '
-    Public Const DEFAULT_PTR_TO_TARGET_ENTITY = &H1072770
-    Public Const DEFAULT_PTR_TO_FOCUS_ENTITY = &H10727B0
-    Private Const ENTITY_OFFSET_HP = &H16A0
-    Private Const ENTITY_OFFSET_HP_MAX = &H16A4
-    Private Const ENTITY_OFFSET_MP = &H16A8
-    Private Const ENTITY_OFFSET_MP_MAX = &H16AC
-    Private Const ENTITY_OFFSET_TP = &H16B0
+    Public Const DEFAULT_PTR_TO_TARGET_ENTITY = &HE902F4
+    Public Const DEFAULT_PTR_TO_FOCUS_ENTITY = &HE902F0
+    Private Const ENTITY_OFFSET_HP = &H1838
+    Private Const ENTITY_OFFSET_HP_MAX = &H183C
+    Private Const ENTITY_OFFSET_MP = &H1840
+    Private Const ENTITY_OFFSET_MP_MAX = &H1844
+    Private Const ENTITY_OFFSET_TP = &H1848
 
     Public Enum EntityValueType
         HP
@@ -66,9 +66,15 @@
     End Function
 
     Private Function ReadInt32(ByVal addr As IntPtr) As Int32
-        Dim _dataBytes(3) As Byte
+        Dim _dataBytes(4) As Byte
         ReadProcessMemory(ffxiv_proc_hdl, addr, _dataBytes, 4, vbNull)
         Return BitConverter.ToInt32(_dataBytes, 0)
+    End Function
+
+    Private Function ReadInt16(ByVal addr As IntPtr) As Int16
+        Dim _dataBytes(2) As Byte
+        ReadProcessMemory(ffxiv_proc_hdl, addr, _dataBytes, 2, vbNull)
+        Return BitConverter.ToInt16(_dataBytes, 0)
     End Function
 
     Private Function GetEntityValue(ByVal entity_ptr_addr As IntPtr, ByVal value_type As EntityValueType) As Integer
@@ -85,7 +91,7 @@
             Case EntityValueType.MP_MAX
                 Return ReadInt32(entity_addr + ENTITY_OFFSET_MP_MAX)
             Case EntityValueType.TP
-                Return ReadInt32(entity_addr + ENTITY_OFFSET_TP)
+                Return ReadInt16(entity_addr + ENTITY_OFFSET_TP)
             Case Else
                 Return 0
         End Select
