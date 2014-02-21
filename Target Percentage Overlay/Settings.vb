@@ -1,6 +1,6 @@
 ﻿Public Class Settings
     ' NOTE: Just increment this for every new release. That is all.
-    Public Const VERSION = 2.1
+    Public Const VERSION = 2.2
 
     Public Enum EntityType
         TARGET = 0
