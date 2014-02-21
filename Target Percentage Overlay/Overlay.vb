@@ -34,7 +34,7 @@ Public Class Overlay
                     current = memory.GetValue(My.Settings.entity, memory.EntityValueType.MP)
                     max = memory.GetValue(My.Settings.entity, memory.EntityValueType.MP_MAX)
                 Case Settings.ResourceType.TP
-                    current = memory.GetValue(My.Settings.entity, memory.EntityValueType.HP)
+                    current = memory.GetValue(My.Settings.entity, memory.EntityValueType.TP)
                     max = 1000
             End Select
 
