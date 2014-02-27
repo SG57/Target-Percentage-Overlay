@@ -26,9 +26,11 @@ Partial Class Overlay
         Me.context_menu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.context_menu_settings_menu_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.context_menu_change_font_menu_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.context_menu_change_font_color_menu_item = New System.Windows.Forms.ToolStripMenuItem()
+        Me.context_menu_change_font_menu_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.context_menu_check_update_menu_item = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.context_menu_about_menu_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.context_menu_donate_menu_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -36,14 +38,15 @@ Partial Class Overlay
         Me.text_label = New System.Windows.Forms.Label()
         Me.font_dialog = New System.Windows.Forms.FontDialog()
         Me.refresh_timer = New System.Windows.Forms.Timer(Me.components)
+        Me.close_timer = New System.Windows.Forms.Timer(Me.components)
         Me.context_menu.SuspendLayout()
         Me.SuspendLayout()
         '
         'context_menu
         '
-        Me.context_menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.context_menu_settings_menu_item, Me.ToolStripSeparator2, Me.context_menu_change_font_menu_item, Me.context_menu_change_font_color_menu_item, Me.ToolStripSeparator4, Me.context_menu_about_menu_item, Me.context_menu_donate_menu_item, Me.ToolStripSeparator1, Me.context_menu_close_menu_item})
+        Me.context_menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.context_menu_settings_menu_item, Me.ToolStripSeparator2, Me.context_menu_change_font_color_menu_item, Me.context_menu_change_font_menu_item, Me.ToolStripSeparator4, Me.context_menu_check_update_menu_item, Me.ToolStripSeparator3, Me.context_menu_about_menu_item, Me.context_menu_donate_menu_item, Me.ToolStripSeparator1, Me.context_menu_close_menu_item})
         Me.context_menu.Name = "ContextMenuStrip1"
-        Me.context_menu.Size = New System.Drawing.Size(184, 176)
+        Me.context_menu.Size = New System.Drawing.Size(184, 204)
         '
         'context_menu_settings_menu_item
         '
@@ -56,22 +59,33 @@ Partial Class Overlay
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
         '
-        'context_menu_change_font_menu_item
-        '
-        Me.context_menu_change_font_menu_item.Name = "context_menu_change_font_menu_item"
-        Me.context_menu_change_font_menu_item.Size = New System.Drawing.Size(183, 22)
-        Me.context_menu_change_font_menu_item.Text = "Change Font..."
-        '
         'context_menu_change_font_color_menu_item
         '
         Me.context_menu_change_font_color_menu_item.Name = "context_menu_change_font_color_menu_item"
         Me.context_menu_change_font_color_menu_item.Size = New System.Drawing.Size(183, 22)
         Me.context_menu_change_font_color_menu_item.Text = "Change Font Color..."
         '
+        'context_menu_change_font_menu_item
+        '
+        Me.context_menu_change_font_menu_item.Name = "context_menu_change_font_menu_item"
+        Me.context_menu_change_font_menu_item.Size = New System.Drawing.Size(183, 22)
+        Me.context_menu_change_font_menu_item.Text = "Change Font..."
+        '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(180, 6)
+        '
+        'context_menu_check_update_menu_item
+        '
+        Me.context_menu_check_update_menu_item.Name = "context_menu_check_update_menu_item"
+        Me.context_menu_check_update_menu_item.Size = New System.Drawing.Size(183, 22)
+        Me.context_menu_check_update_menu_item.Text = "Check for updates..."
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(180, 6)
         '
         'context_menu_about_menu_item
         '
@@ -116,6 +130,10 @@ Partial Class Overlay
         Me.refresh_timer.Enabled = True
         Me.refresh_timer.Interval = 1
         '
+        'close_timer
+        '
+        Me.close_timer.Interval = 1
+        '
         'Overlay
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -155,5 +173,8 @@ Partial Class Overlay
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents context_menu_donate_menu_item As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents context_menu_about_menu_item As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents context_menu_check_update_menu_item As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents close_timer As System.Windows.Forms.Timer
 
 End Class

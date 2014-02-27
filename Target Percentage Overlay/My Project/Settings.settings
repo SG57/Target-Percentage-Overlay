@@ -30,7 +30,7 @@
       <Value Profile="(Default)">Microsoft Sans Serif, 25.8000011pt, style=Bold</Value>
     </Setting>
     <Setting Name="VERSION" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">2.3</Value>
+      <Value Profile="(Default)">2.4</Value>
     </Setting>
   </Settings>
 </SettingsFile>
