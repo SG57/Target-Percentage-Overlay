@@ -56,7 +56,7 @@
     End Sub
 
     Private Function Deref(addr As IntPtr, offset As Int32) As Int32
-        If addr = 0 Then Return addr
+        If addr = 0 Then Throw New Exception()
         Return ReadInt32(IntPtr.Add(addr, offset))
     End Function
 
@@ -91,7 +91,7 @@
     End Function
 
     Private Function GetEntityValue(ByVal entity_addr As IntPtr, ByVal value_type As EntityValueType) As Integer
-        If entity_addr = 0 Then Return 0
+        If entity_addr = 0 Then Throw New Exception()
 
         Select Case value_type
             Case EntityValueType.HP
