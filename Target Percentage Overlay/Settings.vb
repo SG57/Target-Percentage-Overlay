@@ -1,7 +1,4 @@
 ﻿Public Class Settings
-    ' NOTE: Just increment this for every new release. That is all.
-    Public Const VERSION = 2.2
-
     Public Enum EntityType
         TARGET = 0
         FOCUS = 1
@@ -20,6 +17,7 @@
     End Enum
 
     Private Sub Settings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Text = "Target Percentage Overlay v" & My.Settings.VERSION & " Settings"
         boxRefreshTimer.Text = My.Settings.refresh_interval
         boxFfxivProcIndex.Text = My.Settings.ffxiv_process_index
         comboTarget.SelectedIndex = 0 + My.Settings.entity

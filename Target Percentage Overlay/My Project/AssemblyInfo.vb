@@ -1,4 +1,6 @@
-﻿Imports System
+﻿Imports System.Resources
+
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -8,14 +10,14 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TargetHealthPercentage")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Next IT Corporation")> 
-<Assembly: AssemblyProduct("TargetHealthPercentage")> 
-<Assembly: AssemblyCopyright("Copyright © Next IT Corporation 2013")> 
+<Assembly: AssemblyTitle("Target Health Percentage")> 
+<Assembly: AssemblyDescription("A simple overlay that displays the percentage of the current target in FFXIV by reading from memory.")> 
+<Assembly: AssemblyCompany("SG57 Productions")> 
+<Assembly: AssemblyProduct("Target Health Percentage")> 
+<Assembly: AssemblyCopyright("Copyright © SG57 Productions 2013-2014")> 
 <Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("a9e7bf7c-e7f5-4e33-8887-368239c23a19")> 
@@ -31,5 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("2.3.*")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
+
+<Assembly: NeutralResourcesLanguageAttribute("en")> 

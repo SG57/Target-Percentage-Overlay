@@ -135,14 +135,16 @@ Public Class Overlay
     Private Sub AboutMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles context_menu_about_menu_item.Click
         MsgBox("An overlay that displays numerical values and percentages of various resources of targets in FFXIV:ARR as read from memory, making it instant and reliable." &
                vbCrLf & vbCrLf & vbCrLf & vbCrLf &
-               "________________________________________________" &
+               "This overlay will _not_ overlay in true-fullscreen mode!" &
                vbCrLf &
-               "~~Note: the overlay will not overlay in true-fullscreen mode.  If you have 2 monitors, however, you could always put the overlay on the other monitor." &
-               vbCrLf & vbCrLf &
-               "jordansg57@gmail.com - (C) 2013 Cord Rehn" &
+               "You could always put the overlay on another monitor if you're running a multiple monitor setup." &
+               vbCrLf & vbCrLf & vbCrLf & vbCrLf &
+               "(C) 2013-2014" &
                vbCrLf &
-               "danakj@orodu.net - (C) 2013 Dana Jansens",
+               "Cord Rehn - <jordansg57@gmail.com" &
+               vbCrLf &
+               "Dana Jansens - <danakj@orodu.net>",
                MsgBoxStyle.Information,
-               "Target Percentage Overlay v" & Settings.VERSION.ToString("0.##"))
+               "Target Percentage Overlay v" & My.Settings.VERSION)
     End Sub
 End Class
