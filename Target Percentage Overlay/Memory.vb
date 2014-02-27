@@ -2,17 +2,19 @@
     '
     ' Updating Memory Addresses:
     '   These memory addresses need updating if the overlay stops functioning as a result of a FFXIV patch.
-    '   Aftwards, be sure to increment the VERSION number in Settings.vb, then you're finished with the update.
+    '   The first number is the offset from the base address of ffxiv.exe of a pointer. The next number is
+    '   the offset from that pointer's address, repeat.
     '
-    '   These were the default pointers for the ffxiv.exe process as of 2/1/2014. - Cord
+    '   These were the default pointers for the ffxiv.exe process as of 2/26/2014.
     '
-    Public Const DEFAULT_PTR_TO_TARGET_ENTITY = &HE902F4
-    Public Const DEFAULT_PTR_TO_FOCUS_ENTITY = &HE902F0
-    Private Const ENTITY_OFFSET_HP = &H1838
-    Private Const ENTITY_OFFSET_HP_MAX = &H183C
-    Private Const ENTITY_OFFSET_MP = &H1840
-    Private Const ENTITY_OFFSET_MP_MAX = &H1844
-    Private Const ENTITY_OFFSET_TP = &H1848
+    Private TARGET_ENTITY() As Int32 = {&HE912A8, &H4E0}
+    Private FOCUS_ENTITY() As Int32 = {&HE912F0, &H4E0}
+
+    Private Const ENTITY_OFFSET_HP = &H1678
+    Private Const ENTITY_OFFSET_HP_MAX = &H167C
+    Private Const ENTITY_OFFSET_MP = &H1680
+    Private Const ENTITY_OFFSET_MP_MAX = &H1684
+    Private Const ENTITY_OFFSET_TP = &H1688
 
     Public Enum EntityValueType
         HP
@@ -53,13 +55,23 @@
         ffxiv_proc_index = -1
     End Sub
 
+    Private Function Deref(addr As IntPtr, offset As Int32) As Int32
+        Return ReadInt32(IntPtr.Add(addr, offset))
+    End Function
+
     Public Function GetValue(ByVal entity As Settings.EntityType, ByVal value_type As EntityValueType) As Integer
-        Dim base_addr As IntPtr = ffxiv_proc.MainModule.BaseAddress
+        Dim addr = ffxiv_proc.MainModule.BaseAddress
         Select Case entity
             Case Settings.EntityType.TARGET
-                Return GetEntityValue(IntPtr.Add(base_addr, My.Settings.target_pointer_address), value_type)
+                For Each offset In TARGET_ENTITY
+                    addr = Deref(addr, offset)
+                Next
+                Return GetEntityValue(addr, value_type)
             Case Settings.EntityType.FOCUS
-                Return GetEntityValue(IntPtr.Add(base_addr, My.Settings.focus_pointer_address), value_type)
+                For Each offset In FOCUS_ENTITY
+                    addr = Deref(addr, offset)
+                Next
+                Return GetEntityValue(addr, value_type)
             Case Else
                 Return 0
         End Select
@@ -77,8 +89,7 @@
         Return BitConverter.ToInt16(_dataBytes, 0)
     End Function
 
-    Private Function GetEntityValue(ByVal entity_ptr_addr As IntPtr, ByVal value_type As EntityValueType) As Integer
-        Dim entity_addr As IntPtr = ReadInt32(entity_ptr_addr)
+    Private Function GetEntityValue(ByVal entity_addr As IntPtr, ByVal value_type As EntityValueType) As Integer
         If entity_addr = 0 Then Return 0
 
         Select Case value_type

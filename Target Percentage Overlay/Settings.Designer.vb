@@ -31,18 +31,12 @@ Partial Class Settings
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.boxFfxivProcIndex = New System.Windows.Forms.TextBox()
         Me.comboTarget = New System.Windows.Forms.ComboBox()
         Me.comboDisplay = New System.Windows.Forms.ComboBox()
         Me.comboResource = New System.Windows.Forms.ComboBox()
-        Me.boxTargetAddress = New System.Windows.Forms.TextBox()
-        Me.boxFocusAddress = New System.Windows.Forms.TextBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ok_button = New System.Windows.Forms.Button()
         Me.cancel_button = New System.Windows.Forms.Button()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'boxRefreshTimer
@@ -128,32 +122,6 @@ Partial Class Settings
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label4, "What resource to draw the percentage from; HP, MP or TP")
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(10, 37)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(101, 20)
-        Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Main Target :"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label6, resources.GetString("Label6.ToolTip"))
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(10, 76)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(111, 20)
-        Me.Label7.TabIndex = 24
-        Me.Label7.Text = "Focus Target :"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label7, resources.GetString("Label7.ToolTip"))
-        '
         'boxFfxivProcIndex
         '
         Me.boxFfxivProcIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -200,54 +168,9 @@ Partial Class Settings
         Me.comboResource.Size = New System.Drawing.Size(206, 28)
         Me.comboResource.TabIndex = 16
         '
-        'boxTargetAddress
-        '
-        Me.boxTargetAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.boxTargetAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxTargetAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.boxTargetAddress.Location = New System.Drawing.Point(162, 32)
-        Me.boxTargetAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.boxTargetAddress.Name = "boxTargetAddress"
-        Me.boxTargetAddress.Size = New System.Drawing.Size(145, 26)
-        Me.boxTargetAddress.TabIndex = 21
-        Me.boxTargetAddress.Text = "0"
-        Me.boxTargetAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.boxTargetAddress.WordWrap = False
-        '
-        'boxFocusAddress
-        '
-        Me.boxFocusAddress.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.boxFocusAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.boxFocusAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.boxFocusAddress.Location = New System.Drawing.Point(162, 71)
-        Me.boxFocusAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.boxFocusAddress.Name = "boxFocusAddress"
-        Me.boxFocusAddress.Size = New System.Drawing.Size(145, 26)
-        Me.boxFocusAddress.TabIndex = 22
-        Me.boxFocusAddress.Text = "0"
-        Me.boxFocusAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.boxFocusAddress.WordWrap = False
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Controls.Add(Me.boxFocusAddress)
-        Me.GroupBox1.Controls.Add(Me.boxTargetAddress)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 215)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(314, 108)
-        Me.GroupBox1.TabIndex = 23
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Memory Addresses"
-        '
         'ok_button
         '
-        Me.ok_button.Location = New System.Drawing.Point(126, 338)
+        Me.ok_button.Location = New System.Drawing.Point(126, 224)
         Me.ok_button.Name = "ok_button"
         Me.ok_button.Size = New System.Drawing.Size(98, 35)
         Me.ok_button.TabIndex = 24
@@ -257,7 +180,7 @@ Partial Class Settings
         'cancel_button
         '
         Me.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cancel_button.Location = New System.Drawing.Point(230, 338)
+        Me.cancel_button.Location = New System.Drawing.Point(230, 224)
         Me.cancel_button.Name = "cancel_button"
         Me.cancel_button.Size = New System.Drawing.Size(101, 35)
         Me.cancel_button.TabIndex = 25
@@ -269,10 +192,9 @@ Partial Class Settings
         Me.AcceptButton = Me.ok_button
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.CancelButton = Me.cancel_button
-        Me.ClientSize = New System.Drawing.Size(351, 391)
+        Me.ClientSize = New System.Drawing.Size(351, 275)
         Me.Controls.Add(Me.cancel_button)
         Me.Controls.Add(Me.ok_button)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.comboResource)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.comboDisplay)
@@ -293,8 +215,6 @@ Partial Class Settings
         Me.Padding = New System.Windows.Forms.Padding(15)
         Me.Text = "Target Percentage Overlay Settings"
         Me.TopMost = True
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -310,11 +230,6 @@ Partial Class Settings
     Friend WithEvents comboDisplay As System.Windows.Forms.ComboBox
     Friend WithEvents comboResource As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents boxTargetAddress As System.Windows.Forms.TextBox
-    Friend WithEvents boxFocusAddress As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents ok_button As System.Windows.Forms.Button
     Friend WithEvents cancel_button As System.Windows.Forms.Button
 End Class
