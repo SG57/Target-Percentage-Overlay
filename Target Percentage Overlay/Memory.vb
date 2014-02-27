@@ -56,6 +56,7 @@
     End Sub
 
     Private Function Deref(addr As IntPtr, offset As Int32) As Int32
+        If addr = 0 Then Return addr
         Return ReadInt32(IntPtr.Add(addr, offset))
     End Function
 
