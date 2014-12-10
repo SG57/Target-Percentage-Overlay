@@ -1,6 +1,8 @@
 Target-Percentage-Overlay
 =========================
 
+*UPDATE* Rendered _mostly_ OBSOLETE with the addition of in-game Percentage amounts to enemy names by Square enix.
+
 A simple overlay that displays the percentage of the current target in FFXIV by reading from memory.
 <<<<<<< HEAD
 
